@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <!-- Design by foolishdeveloper.com -->
+    <title>Signup Page</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static "css/signup.css" %}?{% now "U" %}">
+    <!--Stylesheet-->
+    {% comment %} <style media="screen">
+
+    </style> {% endcomment %}
+</head>
+<body>
+{% comment %} <div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div> {% endcomment %}
+<div class="container">
+    <form action="" method="post">
+        {% csrf_token %}
+        <h3>Signup Here</h3>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <label for="username">Username</label>
+        <input type="text" placeholder="Username" name="username" id="username">
+    
+        <label for="email">Email</label>
+        <input type="email" placeholder="Email or Phone" name="email" id="email">
+    
+        <label for="password1">Password</label>
+        <input type="password" placeholder="Password" id="password1" name="password1">
+    
+    
+        <label for="password2">Confrom Password</label>
+        <input type="password" placeholder="Confirm Password" id="password2" name="password2">
+        <button type="submit">Signup</button>
+        
+        <div class="login">
+            <span>i have already account.</span>
+            <a href="{% url 'login' %}">login</a>
+        </div>
+        
+    </form>
+</div>
+</body>
+</html>

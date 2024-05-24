@@ -1,0 +1,41 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+#container{
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+#sub-main{
+    background-color: #3f444c;
+}
+#sub-main .infor img{
+    width: 30%;
+    padding-bottom: 20px;
+}
+#sub-main .infor{
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#sub-main .infor h3, #sub-main .infor p{
+    color: #fff;
+    font-size: small;
+}
+.list-feature ul li a{
+    color: #fff;
+    text-decoration: none;
+}
+.list-feature ul li{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#main{
+    background-color: #eceef0;
+}
