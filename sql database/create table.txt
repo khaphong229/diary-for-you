@@ -1,6 +1,4 @@
--- Extension để sử dụng UUID (không còn cần thiết nếu không sử dụng UUID)
--- CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-
+-- Tạo bảng Diaries
 CREATE TABLE Diaries (
     diary_id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL,
@@ -11,19 +9,29 @@ CREATE TABLE Diaries (
     FOREIGN KEY (user_id) REFERENCES auth_user(id)
 );
 
+-- Tạo bảng Languages
+CREATE TABLE Languages (
+    language_code VARCHAR(10) PRIMARY KEY,
+    language_name VARCHAR(50) NOT NULL
+);
+
+-- Tạo bảng Translations
 CREATE TABLE Translations (
     translation_id SERIAL PRIMARY KEY,
     diary_id INTEGER NOT NULL,
     language VARCHAR(10) NOT NULL,
     translated_content TEXT,
     translated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (diary_id) REFERENCES Diaries(diary_id)
+    FOREIGN KEY (diary_id) REFERENCES Diaries(diary_id),
+    FOREIGN KEY (language) REFERENCES Languages(language_code)
 );
 
+-- Tạo bảng Vocabulary
 CREATE TABLE Vocabulary (
     vocabulary_id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL,
     word VARCHAR(100) NOT NULL,
+    meaning TEXT,
     translation_id INTEGER,
     diary_id INTEGER,
     added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -32,7 +40,4 @@ CREATE TABLE Vocabulary (
     FOREIGN KEY (diary_id) REFERENCES Diaries(diary_id)
 );
 
-CREATE TABLE Languages (
-    language_code VARCHAR(10) PRIMARY KEY,
-    language_name VARCHAR(50) NOT NULL
-);
+

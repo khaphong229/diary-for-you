@@ -4,12 +4,20 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from diaries.models import Diary
 # Create your views here.
 
 
 @login_required(login_url='login')
 def HomePage(request):
-    return render(request,'home.html')
+    if request.user.is_authenticated:
+        username = request.user.username
+        list_diaries=Diary.objects.filter(user=request.user)
+        return render(request, 'home.html', {'diaries': list_diaries,
+                                             'username':username})
+        # return render(request, 'home.html', {'username': username})
+    else:
+        return render(request, 'home.html', {'message': 'Username not found'})
 
 def SignupPage(request):
     if request.method=='POST':
@@ -42,3 +50,7 @@ def LoginPage(request):
 def LogoutPage(request):
     logout(request)
     return redirect('login')
+
+def ListDiaries(request):
+    list_diaries=Diary.objects.all()
+    return render(request, 'home.html', {'diaries': list_diaries})

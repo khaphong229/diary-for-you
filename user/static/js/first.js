@@ -8,21 +8,20 @@ function showSlides() {
     }
     slideIndex++;
     if (slideIndex > slides.length) { slideIndex = 1 }
-    slides[slideIndex-1].classList.add("show");
+    slides[slideIndex - 1].classList.add("show");
     setTimeout(showSlides, 3000); // Change image every 3 seconds
 }
 
 var headingElement = document.getElementById("text-heading");
 
 var list_heading_text = [
-  "hey guys! welcome to my portfolio",
-  "my name is phong",
-  "you can follow me with the socials",
-  "good job! bro",
-  "please! hire me",
+  "Diary For You",
+  "Write up your daily story",
+  "Learn foreign languages from interesting diaries",
+  "Keep memories for a long time",
+  "Learning foreign languages is super easy",
 ];
 
-// Ham random trong khoang tuy y
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }

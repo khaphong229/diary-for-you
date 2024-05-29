@@ -7,32 +7,75 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static "css/home.css" %}?{% now "U" %}">
 </head>
 <body>
+    <div class="custom-cursor" id="custom-cursor"></div>
     <div id="container">
         <div id="sub-main">
             <div class="infor">
-                <img src="https://static-00.iconduck.com/assets.00/user-icon-1024x1024-dtzturco.png" alt="user image png">
-                <h3 class="name-user">Phong Kha</h3>
+                <img src="{% static "images/user.png" %}" alt="user image png">
+                {% if username %}
+                <h3 class="name-user">{{ username }}</h3>
+                {% else %}
+                <h3 class="name-user">{{ message }}</h3>
+                {% endif %}
                 <p>Welcome to our website</p>
             </div>
             <div class="list-feature">
                 <ul>
-                    <li><a href="">Your Diary</a></li>
-                    <li><a href="">Your Vocabulary</a></li>
-                    <li><a href="">Setting</a></li>
+                    <li><i class="fa-solid fa-pen"></i><a href="">Your Diary</a></li>
+                    <li><i class="fa-solid fa-book"></i><a href="">Your Vocabulary</a></li>
+                    <li><i class="fa-solid fa-gear"></i><a href="">Setting</a></li>
                 </ul>
             </div>
         </div>
         <div id="main">
             <div class="main-top">
-
+                <div class="main-top-right-one">
+                    <div class="main-top-right">
+                        <div class="address-time">
+                            <h2 id="address"></h2>
+                            <h4 id="time"></h4>
+                        </div>
+                        <div style='display:flex; gap:5px; padding-left:30px;'>
+                            <h1 id="temperature"></h1><i class="fa-solid fa-temperature-three-quarters"></i>
+                        </div>
+                    </div>
+                    <img alt="image weather now" id="img-weather">
+                </div>
+                <div class="task-bar">
+                    <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+                    <a href=""><i class="fa-regular fa-bell"></i></a>
+                    <a href=""><i class="fa-regular fa-calendar"></i></a>
+                    <a href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i></a>
+                </div>
             </div>
             <div class="main-body">
+                {% block content %}
+                <div class="list-diaries">
+                    {% for diary in diaries %}
+                    <div class="diary">
+                        <div class="time-diary">
+                            
+                        </div>
+                        <div class="pre-content-diary">
 
+                        </div>
+                        <div class="handle-diary">
+
+                        </div>
+                        <h2>{{ diary.title }}</h2>
+                        <p>{{ diary.content }}</p>
+                        <p>Created at: {{ diary.created_at }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endblock %}
             </div>
         </div>
     </div>
+    <script src="{% static "js/home.js" %}" type="text/javascript"></script>
 </body>
 </html>

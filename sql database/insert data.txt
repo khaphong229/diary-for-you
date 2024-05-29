@@ -1,4 +1,4 @@
--- Thêm ngôn ngữ mẫu
+-- Thêm dữ liệu mẫu vào bảng Languages
 INSERT INTO Languages (language_code, language_name) VALUES
 ('en', 'English'),
 ('vi', 'Vietnamese'),
@@ -6,15 +6,15 @@ INSERT INTO Languages (language_code, language_name) VALUES
 ('es', 'Spanish'),
 ('de', 'German');
 
--- Thêm dữ liệu cho bảng Diaries
+-- Thêm dữ liệu mẫu vào bảng Diaries
 INSERT INTO Diaries (user_id, title, content, created_at, updated_at) VALUES
 (1, 'My First Diary', 'Content of my first diary.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 (1, 'Travel Diaries', 'I traveled to many places.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-(2, 'Food Journal', 'My experiences with different cuisines.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-(2, 'Workout Log', 'Tracking my workout progress.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-(3, 'Daily Reflections', 'Reflections on my day-to-day activities.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+(1, 'Food Journal', 'My experiences with different cuisines.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(1, 'Workout Log', 'Tracking my workout progress.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(1, 'Daily Reflections', 'Reflections on my day-to-day activities.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
--- Thêm dữ liệu cho bảng Translations
+-- Thêm dữ liệu mẫu vào bảng Translations
 INSERT INTO Translations (diary_id, language, translated_content, translated_at) VALUES
 (1, 'vi', 'Nội dung nhật ký đầu tiên của tôi.', CURRENT_TIMESTAMP),
 (2, 'fr', 'J\'ai voyagé dans de nombreux endroits.', CURRENT_TIMESTAMP),
@@ -22,15 +22,40 @@ INSERT INTO Translations (diary_id, language, translated_content, translated_at)
 (4, 'de', 'Verfolgung meines Trainingsfortschritts.', CURRENT_TIMESTAMP),
 (5, 'en', 'Reflections on my day-to-day activities.', CURRENT_TIMESTAMP);
 
--- Thêm dữ liệu cho bảng Vocabulary
-INSERT INTO Vocabulary (user_id, word, translation_id, diary_id, added_at) VALUES
-(1, 'first', 1, 1, CURRENT_TIMESTAMP),
-(1, 'travel', 2, 2, CURRENT_TIMESTAMP),
-(2, 'food', 3, 3, CURRENT_TIMESTAMP),
-(2, 'workout', 4, 4, CURRENT_TIMESTAMP),
-(3, 'reflections', 5, 5, CURRENT_TIMESTAMP),
-(3, 'diary', 1, 1, CURRENT_TIMESTAMP),
-(1, 'places', 2, 2, CURRENT_TIMESTAMP),
-(2, 'cuisines', 3, 3, CURRENT_TIMESTAMP),
-(2, 'progress', 4, 4, CURRENT_TIMESTAMP),
-(3, 'activities', 5, 5, CURRENT_TIMESTAMP);
+-- Thêm dữ liệu mẫu vào bảng Vocabulary
+-- Thêm dữ liệu mẫu vào bảng Languages
+INSERT INTO Languages (language_code, language_name) VALUES
+('en', 'English'),
+('vi', 'Vietnamese'),
+('fr', 'French'),
+('es', 'Spanish'),
+('de', 'German');
+
+-- Thêm dữ liệu mẫu vào bảng Diaries
+INSERT INTO Diaries (user_id, title, content, created_at, updated_at) VALUES
+(1, 'My First Diary', 'Content of my first diary.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(1, 'Travel Diaries', 'I traveled to many places.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(1, 'Food Journal', 'My experiences with different cuisines.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(1, 'Workout Log', 'Tracking my workout progress.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(1, 'Daily Reflections', 'Reflections on my day-to-day activities.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- Thêm dữ liệu mẫu vào bảng Translations
+INSERT INTO Translations (diary_id, language, translated_content, translated_at) VALUES
+(1, 'vi', 'Nội dung nhật ký đầu tiên của tôi.', CURRENT_TIMESTAMP),
+(2, 'fr', 'J\'ai voyagé dans de nombreux endroits.', CURRENT_TIMESTAMP),
+(3, 'es', 'Mis experiencias con diferentes cocinas.', CURRENT_TIMESTAMP),
+(4, 'de', 'Verfolgung meines Trainingsfortschritts.', CURRENT_TIMESTAMP),
+(5, 'en', 'Reflections on my day-to-day activities.', CURRENT_TIMESTAMP);
+
+-- Thêm dữ liệu mẫu vào bảng Vocabulary
+INSERT INTO Vocabulary (user_id, word, meaning, translation_id, diary_id, added_at) VALUES
+(1, 'first', 'đầu tiên', 1, 1, CURRENT_TIMESTAMP),
+(1, 'travel', 'du lịch', 2, 2, CURRENT_TIMESTAMP),
+(1, 'food', 'thực phẩm', 3, 3, CURRENT_TIMESTAMP),
+(1, 'workout', 'tập luyện', 4, 4, CURRENT_TIMESTAMP),
+(1, 'reflections', 'suy ngẫm', 5, 5, CURRENT_TIMESTAMP),
+(1, 'diary', 'nhật ký', 1, 1, CURRENT_TIMESTAMP),
+(1, 'places', 'nơi chốn', 2, 2, CURRENT_TIMESTAMP),
+(2, 'cuisines', 'ẩm thực', 3, 3, CURRENT_TIMESTAMP),
+(2, 'progress', 'tiến bộ', 4, 4, CURRENT_TIMESTAMP),
+(3, 'activities', 'hoạt động', 5, 5, CURRENT_TIMESTAMP);
