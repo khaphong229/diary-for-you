@@ -1,0 +1,14 @@
+h1{
+    text-align: center;
+    color: #3f444c;
+}
+.form-detail{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form-detail > *{
+    margin: 10px 0;
+    width: 70%;
+}
+

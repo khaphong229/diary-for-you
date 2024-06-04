@@ -175,14 +175,21 @@ hr{
 #temperature{
     color: #eceef0;
 }
+.title-diary{
+    color: #3f444c;
+    text-decoration: none;
+    font-size: x-large;
+    font-weight: bold;
+}
 .time-diary .created-day{
     flex: 3;
-    background-color: #00eeb7;
+    background-color: #0097ff;
     border-radius: 20px 10px 0 0;
     height: 100%;
     text-align: center;
     font-size: xx-large;
     line-height: 75px;
+    color: #fff;
 }
 .time-diary .created-month{
     flex: 1;
@@ -196,6 +203,12 @@ hr{
     border-radius: 10px;
     padding: 15px 25px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.pre-content-diary .title-diary{
+    transition: 0.3s;
+}
+.pre-content-diary .title-diary:hover{
+    color: #0097ff;
 }
 .diary .pre-content-diary .content-diary{
     color: #959595;

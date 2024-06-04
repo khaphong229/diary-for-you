@@ -74,4 +74,26 @@ const handleDataDiary = () => {
     title_input.innerText = title;
   }
 };
+const timeline=()=>{
+  document.addEventListener("DOMContentLoaded", function() {
+    const diaryList = document.querySelectorAll(".list-diaries .diary");
+    let lastDateClass = "";
+    
+    diaryList.forEach(diary => {
+        const dateElement = diary.querySelector(".time-diary");
+        let dateClass=dateElement.innerText;
+        if (dateClass === lastDateClass) {
+          const newDiv = document.createElement('div');
+          newDiv.className = 'flex-container';
+          newDiv.style.flex = '1';
+          const timeDiary = diary.querySelector('.time-diary');
+          diary.insertBefore(newDiv, timeDiary); 
+            dateElement.style.display = 'none';
+        } else {
+            lastDateClass = dateClass;
+        }
+    });
+  });
+}
 handleDataDiary();
+timeline();

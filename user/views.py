@@ -12,7 +12,7 @@ from diaries.models import Diary
 def HomePage(request):
     if request.user.is_authenticated:
         username = request.user.username
-        list_diaries=Diary.objects.filter(user=request.user)
+        list_diaries=Diary.objects.filter(user=request.user).order_by('-updated_at')
         return render(request, 'home.html', {'diaries': list_diaries,
                                              'username':username})
         # return render(request, 'home.html', {'username': username})

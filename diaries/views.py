@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Diary
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 from django.views.generic.edit import DeleteView, UpdateView
 from django.urls import reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
@@ -58,3 +58,7 @@ class UpdateDiaryView(UpdateView):
             return JsonResponse({'message': 'Diary updated successfully!', 'title': diary.title, 'content': diary.content}, status=200)
         return JsonResponse({'errors': form.errors}, status=400)
     
+class DiaryDetailView(DetailView):
+    model=Diary
+    template_name='diary_detail.html'
+    context_object_name='diary'
