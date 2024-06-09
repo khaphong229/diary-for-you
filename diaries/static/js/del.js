@@ -13,7 +13,7 @@ function deleteDiary(diaryId) {
       .then((data) => {
         if (data.message) {
           alert(data.message);
-          location.reload();
+          location.href='/home/';
         } else {
           alert("An error occurred.");
         }

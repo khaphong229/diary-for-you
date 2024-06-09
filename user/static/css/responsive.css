@@ -1,0 +1,20 @@
+/* @media (min-width:1024px){
+
+}
+@media (min-width:740px) and (max-width:1023px){
+    .list-feature ul li{
+        padding-left: 10px;
+    }
+    .main-body{
+        margin-top: 150px;
+    }
+    #sub-main .infor {
+        padding-top: 70px;
+    }
+    .address-time > *{
+        font-size: large;
+    }
+}
+@media (max-width:739px){
+
+} */

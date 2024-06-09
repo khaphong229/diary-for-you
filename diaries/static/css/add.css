@@ -1,33 +1,16 @@
-h1{
-    text-align: center;
-    color: #3f444c;
-}
-#diaryForm{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-#diaryForm > *{
-    margin: 10px 0;
-    width: 70%;
-}
 #id_content, #id_title{
-    width: 100%;
     padding: 20px;
     border: none;
-    border-radius: 5px;
     transition: 0.3s;
     font-size: large
 }
-#id_content{
-    height: 300px;
-}
 #id_title{
     height: 50px;
+    width: 600px;
 }
 #id_content:focus-visible, #id_title:focus-visible{
     outline: none;
-    box-shadow: 0.2rem 0.8rem 1.6rem #0097ff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .btn{
     border: none;
@@ -35,9 +18,37 @@ h1{
     color: #fff;
     transition: 0.5s;
     height: 50px;
-    border-radius: 10px;
+    width: 130px;
 }
 .btn:hover{
     background-color: rgb(10, 135, 212)
 }
 
+.top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.top > *{
+    margin-bottom:10px;
+}
+textarea{
+    width: 100%;
+    height: 100vh;
+}
+.top-rigth{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+#id_created_at{
+    background-color: #0097ff;
+    padding: 10px;
+    font-family: "Roboto Mono",monospace;
+    color: #ffffff;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

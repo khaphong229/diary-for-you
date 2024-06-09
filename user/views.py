@@ -12,10 +12,9 @@ from diaries.models import Diary
 def HomePage(request):
     if request.user.is_authenticated:
         username = request.user.username
-        list_diaries=Diary.objects.filter(user=request.user).order_by('-updated_at')
+        list_diaries=Diary.objects.filter(user=request.user).order_by('-created_at')
         return render(request, 'home.html', {'diaries': list_diaries,
                                              'username':username})
-        # return render(request, 'home.html', {'username': username})
     else:
         return render(request, 'home.html', {'message': 'Username not found'})
 

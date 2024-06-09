@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{% static "css/add.css" %}?{% now "U" %}">
     <link rel="stylesheet" href="{% static "css/update.css" %}?{% now "U" %}">
     <link rel="stylesheet" href="{% static "css/detail.css" %}?{% now "U" %}">
+    <link rel="stylesheet" href="{% static "css/responsive.css" %}?{% now "U" %}">
     <!-- <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/tutorials/timelines/timeline-7/assets/css/timeline-7.css"> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -22,25 +23,31 @@
     <div class="custom-cursor" id="custom-cursor"></div>
     <div id="container">
         <div id="sub-main">
-            <div class="infor">
-                <img src="{% static "images/user.png" %}" alt="user image png">
-                {% if username %}
-                <h3 class="name-user">{{ username }}</h3>
-                {% else %}
-                <h3 class="name-user">{{ message }}</h3>
-                {% endif %}
-                <p>Welcome to our website</p>
+            <div class="sub2-main">
+                <div class="infor">
+                    <img src="{% static "images/user.png" %}" alt="user image png">
+                    {% if username %}
+                    <h3 class="name-user">{{ username }}</h3>
+                    {% else %}
+                    <h3 class="name-user">{{ message }}</h3>
+                    {% endif %}
+                    <p>Welcome to our website</p>
+                </div>
+                <hr>
+                <div class="list-feature">
+                    <ul>
+                        <li><i class="fa-solid fa-pen"></i><a href="{% url 'home' %}">Your Diary</a></li>
+                        <li><i class="fa-solid fa-book"></i><a href="">Your Vocabulary</a></li>
+                        <li><i class="fa-solid fa-gear"></i><a href="">Setting</a></li>
+                    </ul>
+                </div>
             </div>
-            <hr style="color: #eceef0;">
-            <div class="list-feature">
-                <ul>
-                    <li><i class="fa-solid fa-pen"></i><a href="{% url 'home' %}">Your Diary</a></li>
-                    <li><i class="fa-solid fa-book"></i><a href="">Your Vocabulary</a></li>
-                    <li><i class="fa-solid fa-gear"></i><a href="">Setting</a></li>
-                </ul>
-            </div>
+            
         </div>
         <div id="main">
+            {% block new_diary %}
+                <div class="new-diary"><a href="{% url 'add_diary' %}" class="add-diary">new +</a></div>
+            {% endblock new_diary %}
             <div class="main-top">
                 <div class="main-top-right-one">
                     <div class="main-top-right">
@@ -54,7 +61,7 @@
                     </div>
                     <img alt="image weather now" id="img-weather">
                 </div>
-                <a href="{% url 'add_diary' %}" class="add-diary">write in your diary +</a>
+                <!-- <a href="{% url 'add_diary' %}" class="add-diary">write in your diary +</a> -->
                 <div class="task-bar">
                     <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
                     <a href=""><i class="fa-regular fa-bell"></i></a>
@@ -76,8 +83,8 @@
                             <p class="content-diary">{{ diary.content }}</p>
                         </div>
                         <div class="handle-diary">
-                            <a href="{% url 'update-diary' diary.diary_id %}" class="buttn-edit"><i class="fa-solid fa-pen"></i></a>
-                            <a onclick="deleteDiary({{diary.diary_id}})" class="buttn-del"><i class="fa-solid fa-x"></i></a>
+                            <!-- <a href="{% url 'update-diary' diary.diary_id %}" class="buttn-edit"><i class="fa-solid fa-pen"></i></a> -->
+                            <!-- <a onclick="deleteDiary({{diary.diary_id}})" class="buttn-del"><i class="fa-solid fa-x"></i></a> -->
                         </div>
                     </div>
                     {% endfor %}
@@ -86,9 +93,12 @@
             </div>
         </div>
     </div>
+    {% block script %}
     <script src="{% static "js/home.js" %}" type="text/javascript"></script>
-    <script src="{% static "js/add_diary.js" %}" type="text/javascript"></script>
+    {% endblock script %}
+    <!-- <script src="{% static "js/add_diary.js" %}" type="text/javascript"></script>
     <script src="{% static "js/del.js" %}" type="text/javascript"></script>
     <script src="{% static "js/update.js" %}" type="text/javascript"></script>
+    <script src="{% static "js/translate.js" %}" type="text/javascript"></script> -->
 </body>
 </html>

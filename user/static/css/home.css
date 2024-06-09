@@ -11,7 +11,14 @@
 }
 #sub-main{
     background-color: #3f444c;
-    margin-top: 70px;
+    padding-top: 5%;
+}
+.sub2-main{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20%;
+    background-color: #3f444c;
 }
 #sub-main .infor img{
     width: 30%;
@@ -33,6 +40,7 @@ hr{
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    color: #eceef0;
 }
 .list-feature ul li a{
     color: #fff;
@@ -46,12 +54,15 @@ hr{
     padding-left: 40px;
     align-items: center;
     transition: 0.5s;
-    border-radius: 20px;
+    /* border-radius: 20px; */
 }
-.list-feature ul li:hover{
-    background-color: #00eeb7;
-    border-radius: 20px;
+.list-feature ul li a{
+    transition: 0.5s;
+}
+.list-feature ul li a:hover{
+    /* background-color: #00eeb7; */
     cursor: pointer;
+    margin-left:10px ;
 }
 .list-feature ul li i{
     color: white;
@@ -60,17 +71,36 @@ hr{
 #main{
     background-color: #eceef0;
 }
+.new-diary{
+    position: fixed;
+    top: 136px;
+    right: 50px;
+    width: 123px;
+    height: 56px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+.new-diary a{
+    color: #959595;
+}
+.new-diary:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
 #main .main-top{
     background-color: #3f444c;
     width: 100%;
-    height: 10%;
+    /* height: 10%; */
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding-right: 60px;
     z-index: 1;
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     right: 0;
     left: 0;
@@ -161,7 +191,8 @@ hr{
     align-items: center;
 }
 .main-body{
-    margin-top: 110px;
+    /* margin-top: 110px; */
+    padding: 4% 0;
 }
 .diary .time-diary{
     display: flex;
@@ -169,7 +200,10 @@ hr{
     flex: 1;
     height: 100%;
     border-radius: 20px 10px;
-    background-color: #eceef0;
+    background-color: #fff;
+    transition: 0.3s;
+}
+.diary .time-diary:hover{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 #temperature{
@@ -197,11 +231,14 @@ hr{
 }
 .diary .pre-content-diary{
     flex: 4;
-    background-color: #eceef0;
+    background-color: #fff;
     height: 100%;
     width: 100%;
     border-radius: 10px;
     padding: 15px 25px;
+    transition: 0.3s;
+}
+.diary .pre-content-diary:hover{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .pre-content-diary .title-diary{
@@ -215,8 +252,8 @@ hr{
 }
 .diary .handle-diary{
     flex: 1;
-    background-color: #eceef0;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* background-color: #eceef0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
     width: 100%;
     height: 100%;
     border-radius: 20px 10px;

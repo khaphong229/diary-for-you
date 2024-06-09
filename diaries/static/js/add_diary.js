@@ -3,11 +3,13 @@ function addDiary(event) {
 
     const form = document.getElementById('diaryForm');
     const formData = new FormData(form);
+    const csrftoken = getCookie('csrftoken');
+
     console.log(formData);
     fetch(form.action, {
         method: 'POST',
         headers: {
-            'X-CSRFToken': '{{ csrf_token }}',
+            'X-CSRFToken': csrftoken,
             'X-Requested-With': 'XMLHttpRequest'
         },
         body: formData
@@ -32,3 +34,23 @@ function addDiary(event) {
     })
     .catch(error => console.error('Error:', error));
 }
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+document.addEventListener('DOMContentLoaded', (e) => {
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('id_created_at').value = today;
+});

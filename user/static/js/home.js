@@ -1,37 +1,69 @@
+/// get api weather
 const display = (data) => {
   let address = document.getElementById("address");
   let temp = document.getElementById("temperature");
   let time = document.getElementById("time");
   let img_weather = document.getElementById("img-weather");
 
-  address.innerText =
-    data["location"]["name"] + ", " + data["location"]["country"];
-  temp.innerText = data["current"]["temp_c"];
-  let localtime = data["location"]["localtime"];
+  address.innerText = `${data.location.name}, ${data.location.country}`;
+  temp.innerText = `${data.current.temp_c}`;
+  
+  localStorage.setItem('weather_address', address.innerText);
+  localStorage.setItem('weather_temp', temp.innerText);
+  localStorage.setItem('weather_icon', data.current.condition.icon);
+  localStorage.setItem('weather_localtime', data.location.localtime);
+  
+  updateDisplayTime(data.location.localtime);
+  img_weather.src = data.current.condition.icon;
+};
+
+const updateDisplayTime = (localtime) => {
+  let time = document.getElementById("time");
+  let currentTime = new Date();
   let [datePart, timePart] = localtime.split(" ");
   let [year, month, day] = datePart.split("-");
-  let formattedDate = `${timePart} - ${day}/${month}/${year}`;
+  let formattedDate = `${currentTime.getHours()}:${currentTime.getMinutes()} - ${day}/${month}/${year}`;
   time.innerText = formattedDate;
-  img_weather.src = data["current"]["condition"]["icon"];
 };
-const getApi = () => {
-  fetch(
-    "https://api.weatherapi.com/v1/current.json?q=HaNoi&key=4ae04986f307408ba4222015240104"
-  )
-    .then((req) => {
-      return req.json();
-    })
-    .then((data) => {
-      display(data);
-      console.log(data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-getApi();
-setInterval(getApi, 30000);
 
+const getApi = () => {
+  fetch("https://api.weatherapi.com/v1/current.json?q=HaNoi&key=4ae04986f307408ba4222015240104")
+      .then((req) => req.json())
+      .then((data) => {
+          display(data);
+          console.log(data);
+      })
+      .catch((err) => {
+          console.log(err);
+      });
+};
+
+const loadLocalData = () => {
+  let address = localStorage.getItem('weather_address');
+  let temp = localStorage.getItem('weather_temp');
+  let icon = localStorage.getItem('weather_icon');
+  let localtime = localStorage.getItem('weather_localtime');
+
+  if (address && temp && icon && localtime) {
+      document.getElementById("address").innerText = address;
+      document.getElementById("temperature").innerText = temp;
+      document.getElementById("img-weather").src = icon;
+      updateDisplayTime(localtime);
+  } else {
+      getApi();
+  }
+};
+
+loadLocalData();
+setInterval(() => {
+  let localtime = localStorage.getItem('weather_localtime');
+  if (localtime) {
+      updateDisplayTime(localtime);
+  }
+}, 60000);
+
+
+// effect to move cursor
 document.addEventListener("DOMContentLoaded", () => {
   const customCursor = document.getElementById("custom-cursor");
   let mouseX = 0,
@@ -56,6 +88,8 @@ document.addEventListener("DOMContentLoaded", () => {
   requestAnimationFrame(updateCursor);
 });
 
+
+// edit the ui of list diaries
 const handleDataDiary = () => {
   let numbers_diary = document.getElementsByClassName("diary").length;
   for (let i = 0; i < numbers_diary; i++) {
@@ -97,3 +131,17 @@ const timeline=()=>{
 }
 handleDataDiary();
 timeline();
+
+// get username and save in the localstorage
+const get_save_user_name=()=>{
+  let nameuser=document.getElementsByClassName('name-user')[0].innerText;
+  if(!sessionStorage.getItem('user-name') || sessionStorage.getItem('user-name')!=nameuser){
+    sessionStorage.setItem('user-name',nameuser);
+  }
+  if(!nameuser){
+    let user=sessionStorage.getItem('user-name');
+    console.log(user);
+    document.getElementsByClassName('name-user')[0].innerText=user;
+  }
+}
+get_save_user_name();
