@@ -4,19 +4,24 @@
 {% block new_diary %}
   <div></div>
 {% endblock new_diary %}
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
-<h1>Update Diary</h1>
-    <form id="update-diary-form" onsubmit="event.preventDefault(); updateDiary({{ diary.diary_id }});">
+<form id="update-diary-form" onsubmit="event.preventDefault(); updateDiary({{ diary.diary_id }});">
+    <div class="update-top">
         <div class="form-group">
-            <label for="id_title">Title</label>
+            <label for="id_created_at"></label>
+            <input type="date" name="created_at" id="id_created_at" class="form-control" value="{{diary.created_at|date:'Y-m-d'}}">
+        </div>
+        <div class="form-group">
+            <label for="id_title"></label>
             <input type="text" id="id_title" name="title" value="{{ diary.title }}" class="form-control">
         </div>
-        <div class="form-group">
-            <label for="id_content">Content</label>
-            <textarea id="id_content" name="content" class="form-control">{{ diary.content }}</textarea>
-        </div>
         <button type="submit" class="btn btn-primary mb-2">Update Diary</button>
-    </form>
+    </div>
+    <div class="form-group">
+        <label for="id_content"></label>
+        <textarea id="id_content" name="content" class="form-control">{{ diary.content }}</textarea>
+    </div>
+    
+</form>
 {% endblock %}
 {% block script %}
 <script src="{% static "js/update.js" %}" type="text/javascript"></script>

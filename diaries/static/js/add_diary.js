@@ -47,6 +47,7 @@ function getCookie(name) {
             }
         }
     }
+    console.log(cookieValue);
     return cookieValue;
 }
 

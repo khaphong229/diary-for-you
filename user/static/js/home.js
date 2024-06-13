@@ -8,10 +8,10 @@ const display = (data) => {
   address.innerText = `${data.location.name}, ${data.location.country}`;
   temp.innerText = `${data.current.temp_c}`;
   
-  localStorage.setItem('weather_address', address.innerText);
-  localStorage.setItem('weather_temp', temp.innerText);
-  localStorage.setItem('weather_icon', data.current.condition.icon);
-  localStorage.setItem('weather_localtime', data.location.localtime);
+  sessionStorage.setItem('weather_address', address.innerText);
+  sessionStorage.setItem('weather_temp', temp.innerText);
+  sessionStorage.setItem('weather_icon', data.current.condition.icon);
+  sessionStorage.setItem('weather_localtime', data.location.localtime);
   
   updateDisplayTime(data.location.localtime);
   img_weather.src = data.current.condition.icon;
@@ -39,10 +39,10 @@ const getApi = () => {
 };
 
 const loadLocalData = () => {
-  let address = localStorage.getItem('weather_address');
-  let temp = localStorage.getItem('weather_temp');
-  let icon = localStorage.getItem('weather_icon');
-  let localtime = localStorage.getItem('weather_localtime');
+  let address = sessionStorage.getItem('weather_address');
+  let temp = sessionStorage.getItem('weather_temp');
+  let icon = sessionStorage.getItem('weather_icon');
+  let localtime = sessionStorage.getItem('weather_localtime');
 
   if (address && temp && icon && localtime) {
       document.getElementById("address").innerText = address;
@@ -56,7 +56,7 @@ const loadLocalData = () => {
 
 loadLocalData();
 setInterval(() => {
-  let localtime = localStorage.getItem('weather_localtime');
+  let localtime = sessionStorage.getItem('weather_localtime');
   if (localtime) {
       updateDisplayTime(localtime);
   }
@@ -132,16 +132,19 @@ const timeline=()=>{
 handleDataDiary();
 timeline();
 
-// get username and save in the localstorage
-const get_save_user_name=()=>{
-  let nameuser=document.getElementsByClassName('name-user')[0].innerText;
-  if(!sessionStorage.getItem('user-name') || sessionStorage.getItem('user-name')!=nameuser){
-    sessionStorage.setItem('user-name',nameuser);
+const getSaveUserName = () => {
+  let nameUserElement = document.getElementsByClassName('name-user')[0];
+  let nameUser = nameUserElement ? nameUserElement.innerText : '';
+  if (nameUser && (!sessionStorage.getItem('user-name') || sessionStorage.getItem('user-name') !== nameUser)) {
+    sessionStorage.setItem('user-name', nameUser);
   }
-  if(!nameuser){
-    let user=sessionStorage.getItem('user-name');
+  if (!nameUser) {
+    let user = sessionStorage.getItem('user-name');
     console.log(user);
-    document.getElementsByClassName('name-user')[0].innerText=user;
+    if (user) {
+      nameUserElement.innerText = user;
+    }
   }
-}
-get_save_user_name();
+};
+
+getSaveUserName();

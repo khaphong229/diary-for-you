@@ -2,6 +2,7 @@ function updateDiary(diaryId) {
     const csrftoken = getCookie('csrftoken');
     const title = document.getElementById('id_title').value;
     const content = document.getElementById('id_content').value;
+    const created=document.getElementById('id_created_at').value;
     fetch(`/update-diary/${diaryId}/`, {
         method: 'PUT',
         headers: {
@@ -9,7 +10,7 @@ function updateDiary(diaryId) {
             'X-Requested-With': 'XMLHttpRequest',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({title: title, content: content})
+        body: JSON.stringify({title: title, content: content,created_at:created})
     })
     .then(response => response.json())
     .then(data => {

@@ -56,4 +56,22 @@ h3:hover, #diary-content:hover{
     justify-content: center;
     gap: 20px;
     margin: 20px 0;
+    height: 50px;
+    align-items: center;
+}
+#translate-form .fa-solid{
+    color: #0097ff;
+    margin: 0 4px;
+}
+#translate-form button{
+    border: none;
+    background-color: #0097ff;
+    padding: 0 4px;
+    color: #fff;
+}
+.fa-solid:hover, #translate-form button:hover{
+    cursor: pointer;
+}
+div#translated-content {
+    padding: 0 50px;
 }

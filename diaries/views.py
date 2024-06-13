@@ -54,10 +54,10 @@ class DeleteDiaryView(DeleteView):
             return JsonResponse({'message': 'Diary deleted successfully!'}, status=200)
         return super().delete(request, *args, **kwargs)
     
-        
+@method_decorator(csrf_exempt, name='dispatch')
 class UpdateDiaryView(UpdateView):
     model=Diary
-    fields=['title','content']
+    fields=['title','content','created_at']
     template_name='update_diary.html'
     success_url=reverse_lazy('home')
     
@@ -67,8 +67,16 @@ class UpdateDiaryView(UpdateView):
         form = self.get_form()
         form.data = data
         if form.is_valid():
-            diary = form.save()
-            return JsonResponse({'message': 'Diary updated successfully!', 'title': diary.title, 'content': diary.content}, status=200)
+            diary = form.save(commit=False)
+            created_at_str = data.get('created_at')
+            if created_at_str:
+                created_date = datetime.datetime.strptime(created_at_str, '%Y-%m-%d').date()
+                current_time = timezone.now().time()
+                created_at = datetime.datetime.combine(created_date, current_time)
+                diary.created_at = timezone.make_aware(created_at, timezone.get_default_timezone())
+            diary.save()
+            # diary = form.save()
+            return JsonResponse({'message': 'Diary updated successfully!', 'title': diary.title, 'content': diary.content, 'created_at':diary.created_at}, status=200)
         return JsonResponse({'errors': form.errors}, status=400)
     
 class DiaryDetailView(DetailView):

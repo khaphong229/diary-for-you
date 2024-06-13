@@ -1,14 +1,5 @@
-/* h1{
-    text-align: center;
-    color: #3f444c;
-}
-#update-diary-form{
+.update-top{
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin: 20px 0;
+    justify-content: center;
 }
-#update-diary-form > *{
-    margin: 10px 0;
-    width: 70%;
-}
- */
