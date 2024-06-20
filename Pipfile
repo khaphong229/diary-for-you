@@ -6,9 +6,12 @@ name = "pypi"
 [packages]
 django = "*"
 psycopg2 = "*"
+<<<<<<< HEAD
 django-livereload-server = "*"
 requests = "*"
 pytz = "*"
+=======
+>>>>>>> adc21e0 (trans vocab fix)
 
 [dev-packages]
 

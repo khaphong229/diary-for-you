@@ -1,0 +1,39 @@
+{% extends "home.html" %}
+{% load static %}
+{% block new_diary %}
+    <div></div>
+{% endblock new_diary %}
+{% block content %}
+<link rel="stylesheet" href="{% static "css/add_vocab.css" %}?{% now "U" %}">
+<h2 class="title-vocab">Add New Vocabulary</h2>
+<form id="vocabulary-form" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="hidden" id="current-user-id" value="{{ request.user.id }}">
+    <div>
+        <label for="id_word"></label>
+        <input placeholder="Word" type="text" id="id_word" name="word" class="form-control">
+    </div>
+    <div>
+        <label for="id_meaning"></label>
+        <textarea placeholder="Meaning" id="id_meaning" name="meaning" class="form-control"></textarea>
+    </div>
+    <div>
+        <label for="id_pronunciation"></label>
+        <input placeholder="Pronunciation" type="text" id="id_pronunciation" name="pronunciation" class="form-control">
+    </div>
+    <div>
+        <label for="id_audio"></label>
+        <input type="file" id="id_audio" name="audio" class="form-control">
+    </div>
+    <div>
+        <label for="id_examples"></label>
+        <textarea placeholder="Example Sentences" id="id_examples" name="examples" class="form-control"></textarea>
+    </div>
+    <button type="submit">Save</button>
+</form>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'js/home.js' %}"></script>
+<script src="{% static 'js/add_vocab.js' %}"></script>
+{% endblock %}

@@ -2,7 +2,17 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Poppins',sans-serif;
+    /* font-family: 'Poppins',sans-serif; */
+    /* font-family: 'Montserrat', sans-serif; */
+    /* font-family: 'Roboto Slab', serif; */
+    /* font-family: 'Roboto Mono', monospace; */
+    /* font-family: 'Nunito', sans-serif; */
+    /* font-family: 'Noto Serif', serif; */
+    /* font-family: 'Lobster', cursive; */
+    /* font-family: 'Dancing Script', cursive; */
+    /* font-family: 'Patrick Hand', cursive; */
+    /* font-family: 'Itim', cursive; */
+    font-family: 'Saira', sans-serif;
 }
 #container{
     display: grid;
@@ -18,7 +28,8 @@
     top: 0;
     left: 0;
     width: 20%;
-    background-color: #3f444c;
+    height: 100vh;
+    /* background-color: #3f444c; */
 }
 #sub-main .infor img{
     width: 30%;
@@ -73,7 +84,7 @@ hr{
 }
 .new-diary{
     position: fixed;
-    top: 136px;
+    top: 110px;
     right: 50px;
     width: 123px;
     height: 56px;

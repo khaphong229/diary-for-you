@@ -1,3 +1,4 @@
+
 /// get api weather
 const display = (data) => {
   let address = document.getElementById("address");
@@ -62,33 +63,6 @@ setInterval(() => {
   }
 }, 60000);
 
-
-// effect to move cursor
-document.addEventListener("DOMContentLoaded", () => {
-  const customCursor = document.getElementById("custom-cursor");
-  let mouseX = 0,
-    mouseY = 0;
-  let cursorX = 0,
-    cursorY = 0;
-
-  document.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-  });
-
-  function updateCursor() {
-    cursorX += (mouseX - cursorX) * 0.1;
-    cursorY += (mouseY - cursorY) * 0.1;
-
-    customCursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
-
-    requestAnimationFrame(updateCursor);
-  }
-
-  requestAnimationFrame(updateCursor);
-});
-
-
 // edit the ui of list diaries
 const handleDataDiary = () => {
   let numbers_diary = document.getElementsByClassName("diary").length;
@@ -135,8 +109,10 @@ timeline();
 const getSaveUserName = () => {
   let nameUserElement = document.getElementsByClassName('name-user')[0];
   let nameUser = nameUserElement ? nameUserElement.innerText : '';
+  let userId=document.getElementById('user_id_curr') ? document.getElementById('user_id_curr').value : '';
   if (nameUser && (!sessionStorage.getItem('user-name') || sessionStorage.getItem('user-name') !== nameUser)) {
     sessionStorage.setItem('user-name', nameUser);
+    sessionStorage.setItem('user_id',userId);
   }
   if (!nameUser) {
     let user = sessionStorage.getItem('user-name');

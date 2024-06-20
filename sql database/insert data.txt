@@ -48,6 +48,7 @@ INSERT INTO Translations (diary_id, language, translated_content, translated_at)
 (5, 'en', 'Reflections on my day-to-day activities.', CURRENT_TIMESTAMP);
 
 -- Thêm dữ liệu mẫu vào bảng Vocabulary
+<<<<<<< HEAD
 INSERT INTO Vocabulary (user_id, word, meaning, translation_id, diary_id, added_at) VALUES
 (1, 'first', 'đầu tiên', 1, 1, CURRENT_TIMESTAMP),
 (1, 'travel', 'du lịch', 2, 2, CURRENT_TIMESTAMP),
@@ -59,3 +60,16 @@ INSERT INTO Vocabulary (user_id, word, meaning, translation_id, diary_id, added_
 (2, 'cuisines', 'ẩm thực', 3, 3, CURRENT_TIMESTAMP),
 (2, 'progress', 'tiến bộ', 4, 4, CURRENT_TIMESTAMP),
 (3, 'activities', 'hoạt động', 5, 5, CURRENT_TIMESTAMP);
+=======
+INSERT INTO Vocabulary (user_id, word, meaning, pronunciation, audio, example_sentence, translation_id, diary_id, added_at) VALUES
+(1, 'first', 'đầu tiên', 'fɜːst', 'first_audio.mp3', 'This is my first diary.', 3, 3, CURRENT_TIMESTAMP),
+(1, 'travel', 'du lịch', 'ˈtrævəl', 'travel_audio.mp3', 'I love to travel around the world.', 3, 3, CURRENT_TIMESTAMP),
+(1, 'food', 'thực phẩm', 'fuːd', 'food_audio.mp3', 'Food is an essential part of life.', 3, 3, CURRENT_TIMESTAMP),
+(1, 'workout', 'tập luyện', 'ˈwɜːrkaʊt', 'workout_audio.mp3', 'Workout helps to stay healthy.', 3, 12, CURRENT_TIMESTAMP),
+(1, 'reflections', 'suy ngẫm', 'rɪˈflɛkʃənz', 'reflections_audio.mp3', 'Daily reflections improve mindfulness.',3, 12, CURRENT_TIMESTAMP),
+(1, 'diary', 'nhật ký', 'ˈdaɪəri', 'diary_audio.mp3', 'I write my diary every night.', 3, 13, CURRENT_TIMESTAMP),
+(1, 'places', 'nơi chốn', 'pleɪsɪz', 'places_audio.mp3', 'I visited many places.', 3, 14, CURRENT_TIMESTAMP),
+(1, 'cuisines', 'ẩm thực', 'kwɪˈziːnz', 'cuisines_audio.mp3', 'I enjoy trying different cuisines.', 3, 15, CURRENT_TIMESTAMP),
+(1, 'progress', 'tiến bộ', 'ˈprɑːɡrɛs', 'progress_audio.mp3', 'I made good progress in my workout.', 3, 15, CURRENT_TIMESTAMP),
+(1, 'activities', 'hoạt động', 'ækˈtɪvətiz', 'activities_audio.mp3', 'I have many activities every day.', 3,15, CURRENT_TIMESTAMP);
+>>>>>>> adc21e0 (trans vocab fix)

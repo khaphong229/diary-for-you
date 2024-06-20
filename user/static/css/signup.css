@@ -8,6 +8,7 @@
 body{
     /* background-color: #009579; */
     background: url("images/Vladimir-Kush-Safe-harbor.jpg") top center / cover no-repeat;
+    font-family: 'Saira', sans-serif;
 }
 .background{
     width: 430px;

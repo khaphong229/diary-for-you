@@ -12,7 +12,7 @@
         <a onclick="deleteDiary({{diary.diary_id}})" class="buttn-del"><i class="fa-solid fa-x"></i></a>
     </div>
 </div>
-
+<input type="hidden" id="current-user-id" value=""{{ request.user.id }}>
 <div class="form-detail">
     <p class="alert alert-info" id="diary-content">{{ diary.content }}</p>
     <form action="" id="translate-form" onsubmit="event.preventDefault(); translateDiary({{diary.diary_id}})">

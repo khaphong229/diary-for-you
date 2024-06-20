@@ -1,0 +1,42 @@
+{% extends "home.html" %}
+{% load static %}
+{% block new_diary %}
+    <div></div>
+{% endblock new_diary %}
+{% block content %}
+<style>
+    .user-info-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
+
+    .user-info-container h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+
+    .user-info-container p {
+        margin-bottom: 10px;
+        font-size: 18px;
+    }
+
+    .user-info-container p strong {
+        margin-right: 10px;
+    }
+</style>
+<div class="user-info-container">
+    <h2>User Information</h2>
+    <p><strong>Username:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Account Status:</strong>{% if user.is_active %}Active {% else %} Not Active{% endif %}</p>
+    <p><strong>Date Joined:</strong> {{ user.date_joined }}</p>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock %}

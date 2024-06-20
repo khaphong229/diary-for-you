@@ -1,3 +1,4 @@
+from typing import Any
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -5,6 +6,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from diaries.models import Diary
+from django.views.generic import DetailView
 # Create your views here.
 
 
@@ -12,9 +14,11 @@ from diaries.models import Diary
 def HomePage(request):
     if request.user.is_authenticated:
         username = request.user.username
+        user_id=request.user.id
         list_diaries=Diary.objects.filter(user=request.user).order_by('-created_at')
         return render(request, 'home.html', {'diaries': list_diaries,
-                                             'username':username})
+                                             'username':username,
+                                             'user_id':user_id},)
     else:
         return render(request, 'home.html', {'message': 'Username not found'})
 
@@ -53,3 +57,9 @@ def LogoutPage(request):
 def ListDiaries(request):
     list_diaries=Diary.objects.all()
     return render(request, 'home.html', {'diaries': list_diaries})
+
+
+
+@login_required
+def user_info(request):
+    return render(request,'user_in4.html',{'user':request.user})

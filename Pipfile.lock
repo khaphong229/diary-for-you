@@ -1,7 +1,11 @@
 {
     "_meta": {
         "hash": {
+<<<<<<< HEAD
             "sha256": "839dd054407f75568b9bc5de5aa8a01220ac9cb9998943222089e6a94a39363a"
+=======
+            "sha256": "e2403a1f119ece006590c71b02b970ae9df4646e5c78171b4afdcc0130c70770"
+>>>>>>> adc21e0 (trans vocab fix)
         },
         "pipfile-spec": 6,
         "requires": {
@@ -24,6 +28,7 @@
             "markers": "python_version >= '3.8'",
             "version": "==3.8.1"
         },
+<<<<<<< HEAD
         "certifi": {
             "hashes": [
                 "sha256:3cd43f1c6fa7dedc5899d69d3ad0398fd018ad1a17fba83ddaf78aa46c747516",
@@ -128,6 +133,8 @@
             "markers": "python_full_version >= '3.7.0'",
             "version": "==3.3.2"
         },
+=======
+>>>>>>> adc21e0 (trans vocab fix)
         "django": {
             "hashes": [
                 "sha256:8363ac062bb4ef7c3f12d078f6fa5d154031d129a15170a1066412af49d30905",
@@ -137,6 +144,7 @@
             "markers": "python_version >= '3.10'",
             "version": "==5.0.6"
         },
+<<<<<<< HEAD
         "django-livereload-server": {
             "hashes": [
                 "sha256:e03bd65d1679ef1b4a5e22e2a77d11d3cfb0e3d21ae25afba49e280924ba6f58",
@@ -153,6 +161,8 @@
             "markers": "python_version >= '3.5'",
             "version": "==3.7"
         },
+=======
+>>>>>>> adc21e0 (trans vocab fix)
         "psycopg2": {
             "hashes": [
                 "sha256:121081ea2e76729acfb0673ff33755e8703d45e926e416cb59bae3a86c6a4981",
@@ -173,6 +183,7 @@
             "markers": "python_version >= '3.7'",
             "version": "==2.9.9"
         },
+<<<<<<< HEAD
         "pytz": {
             "hashes": [
                 "sha256:2a29735ea9c18baf14b448846bde5a48030ed267578472d8955cd0e7443a9812",
@@ -190,6 +201,8 @@
             "markers": "python_version >= '3.8'",
             "version": "==2.32.3"
         },
+=======
+>>>>>>> adc21e0 (trans vocab fix)
         "sqlparse": {
             "hashes": [
                 "sha256:714d0a4932c059d16189f58ef5411ec2287a4360f17cdd0edd2d09d4c5087c93",
@@ -198,6 +211,7 @@
             "markers": "python_version >= '3.8'",
             "version": "==0.5.0"
         },
+<<<<<<< HEAD
         "tornado": {
             "hashes": [
                 "sha256:163b0aafc8e23d8cdc3c9dfb24c5368af84a81e3364745ccb4427669bf84aec8",
@@ -215,6 +229,8 @@
             "markers": "python_version >= '3.8'",
             "version": "==6.4.1"
         },
+=======
+>>>>>>> adc21e0 (trans vocab fix)
         "tzdata": {
             "hashes": [
                 "sha256:2674120f8d891909751c38abcdfd386ac0a5a1127954fbc332af6b5ceae07efd",
@@ -222,6 +238,7 @@
             ],
             "markers": "sys_platform == 'win32'",
             "version": "==2024.1"
+<<<<<<< HEAD
         },
         "urllib3": {
             "hashes": [
@@ -230,6 +247,8 @@
             ],
             "markers": "python_version >= '3.8'",
             "version": "==2.2.1"
+=======
+>>>>>>> adc21e0 (trans vocab fix)
         }
     },
     "develop": {}

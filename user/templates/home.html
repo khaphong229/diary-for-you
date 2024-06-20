@@ -15,12 +15,14 @@
     <link rel="stylesheet" href="{% static "css/update.css" %}?{% now "U" %}">
     <link rel="stylesheet" href="{% static "css/detail.css" %}?{% now "U" %}">
     <link rel="stylesheet" href="{% static "css/responsive.css" %}?{% now "U" %}">
+    <link rel="stylesheet" href="{% static "css/list.css" %}?{% now "U" %}">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Itim|Lobster|Montserrat:500|Noto+Serif|Nunito|Patrick+Hand|Roboto+Mono:100,100i,300,300i,400,400i,500,500i,700,700i|Roboto+Slab|Saira" rel="stylesheet">
     <!-- <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/tutorials/timelines/timeline-7/assets/css/timeline-7.css"> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
-    <div class="custom-cursor" id="custom-cursor"></div>
+    {% comment %} <div class="custom-cursor" id="custom-cursor"></div> {% endcomment %}
     <div id="container">
         <div id="sub-main">
             <div class="sub2-main">
@@ -28,6 +30,7 @@
                     <img src="{% static "images/user.png" %}" alt="user image png">
                     {% if username %}
                     <h3 class="name-user">{{ username }}</h3>
+                    <input type="hidden" id="user_id_curr" value="{{user_id}}">
                     {% else %}
                     <h3 class="name-user">{{ message }}</h3>
                     {% endif %}
@@ -37,8 +40,8 @@
                 <div class="list-feature">
                     <ul>
                         <li><i class="fa-solid fa-pen"></i><a href="{% url 'home' %}">Your Diary</a></li>
-                        <li><i class="fa-solid fa-book"></i><a href="">Your Vocabulary</a></li>
-                        <li><i class="fa-solid fa-gear"></i><a href="">Setting</a></li>
+                        <li><i class="fa-solid fa-book"></i><a href="{% url 'list-vocabs' %}">Your Vocabulary</a></li>
+                        <li><i class="fa-solid fa-gear"></i><a href="{% url 'setting-user' %}">Setting</a></li>
                     </ul>
                 </div>
             </div>

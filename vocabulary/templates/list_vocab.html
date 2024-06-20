@@ -1,0 +1,49 @@
+{% extends 'home.html' %}
+{% block new_diary %}
+{% load static %}
+{% comment %} <div class="new-diary"><a href="{% url 'add_vocabulary' %}" class="add-diary">new +</a></div> {% endcomment %}
+<div></div>
+{% endblock new_diary %}
+{% block content %}
+<h2>Your Vocabularies</h3>
+<div class="new-vocab"><a href="{% url 'add_vocabulary' %}" class="add-vocab">new +</a></div>
+<table>
+    <thead>
+        <tr>
+            <th>Word</th>
+            <th>Meaning</th>
+            <th>Pronunciation</th>
+            <th>Audio</th>
+            <th>Example Sentence</th>
+            <th>Handle it</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for vocab in vocabs %}
+            <tr>
+                <td class="word-vocab">{{ vocab.word }}</td>
+                <td>{{ vocab.meaning }}</td>
+                <td>{{ vocab.pronunciation }}</td>
+                <td>
+                    {% if vocab.audio %}
+                        <audio controls>
+                            <source src="{{ vocab.audio }}" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    {% endif %}
+                </td>
+                <td>{{ vocab.example_sentence }}</td>
+                <td class='handle-general'>
+                  <button><a href="{% url 'edit_vocabulary' vocab.vocabulary_id %}">Edit</a></button>
+                  <button onclick="deleteVocabulary({{ vocab.vocabulary_id }})"><a href="">Delete</a></button>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+{% block script %}
+<script src="{% static 'js/home.js' %}"></script>
+<script src="{% static 'js/add_vocab.js' %}"></script>
+<script src="{% static 'js/vocab.js' %}"></script>
+{% endblock %}
