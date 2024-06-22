@@ -32,12 +32,10 @@ CREATE TABLE Vocabulary (
     user_id INTEGER NOT NULL,
     word VARCHAR(100) NOT NULL,
     meaning TEXT,
-<<<<<<< HEAD
     translation_id INTEGER,
     diary_id INTEGER,
     added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES auth_user(id),
-=======
     pronunciation VARCHAR(100), -- Thêm thuộc tính phiên âm
     audio VARCHAR(255), -- Thêm thuộc tính audio của phiên âm
     example_sentence TEXT, -- Thêm thuộc tính câu mẫu liên quan đến từ đó
@@ -45,13 +43,6 @@ CREATE TABLE Vocabulary (
     diary_id INTEGER,
     added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users_user(id),
->>>>>>> adc21e0 (trans vocab fix)
     FOREIGN KEY (translation_id) REFERENCES Translations(translation_id),
     FOREIGN KEY (diary_id) REFERENCES Diaries(diary_id)
 );
-
-
-<<<<<<< HEAD
-=======
-
->>>>>>> adc21e0 (trans vocab fix)

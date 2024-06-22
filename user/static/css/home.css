@@ -88,7 +88,7 @@ hr{
     right: 50px;
     width: 123px;
     height: 56px;
-    background-color: #fff;
+    background-color: #0097ff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -96,10 +96,10 @@ hr{
     transition: 0.3s;
 }
 .new-diary a{
-    color: #959595;
+    color: #fff;
 }
 .new-diary:hover{
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 #main .main-top{
     background-color: #3f444c;
@@ -111,11 +111,10 @@ hr{
     justify-content: space-between;
     padding-right: 60px;
     z-index: 1;
-    /* position: fixed; */
     top: 0;
     right: 0;
     left: 0;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 .add-diary{
     color: #eceef0;

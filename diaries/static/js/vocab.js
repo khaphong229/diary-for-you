@@ -5,9 +5,6 @@ document.addEventListener('mouseup', function(event) {
     if (selectedText.length > 0 && !event.target.closest('#word-popup')) {
         fetch_meaning(selectedText, event);
     }
-    // } else {
-    //     closePopup();
-    // }
 });
 
 document.addEventListener('mousedown', function(event) {
@@ -52,13 +49,13 @@ const show_popup = (word, meaning, pronunciation, audio, examples, mouseEvent) =
 
     popup.innerHTML = `
         <h3>${word}</h3>
-        <p><strong>Meaning:</strong> ${meaning}</p>
-        <p><strong>Pronunciation:</strong> ${pronunciation}</p>
+        <p>Meaning: ${meaning}</p>
+        <p>Pronunciation: ${pronunciation}</p>
         <audio controls>
             <source src="${audio}" type="audio/mp3">
             Your browser does not support the audio element.
         </audio>
-        <p><strong>Example:</strong> ${examples}</p>
+        <p>Example: ${examples}</p>
         <button id="save-word-btn">Save</button>
     `;
 

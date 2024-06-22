@@ -29,13 +29,12 @@ def trans_word(request):
             pronunciation = data['phonetics'][0]['text'] if data['phonetics'] else ''
             audio = data['phonetics'][0]['audio'] if data['phonetics'] else ''
             examples = data['meanings'][0]['definitions'][0]['example'] if 'example' in data['meanings'][0]['definitions'][0] else ''
-
             return JsonResponse({
                 'success': True,
                 'meaning': meaning,
                 'pronunciation': pronunciation,
                 'audio': audio,
-                'examples': [examples]
+                'examples': examples
             }, status=200)
         else:
             return JsonResponse({'success': False, 'message': 'Word not found'}, status=404)
@@ -53,7 +52,6 @@ def save_word(request):
         audio = data.get('audio')
         example_sentence = data.get('example_sentence')
 
-        # Kiểm tra user_id
         try:
             user = User.objects.get(pk=user_id)
         except User.DoesNotExist:
