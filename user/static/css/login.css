@@ -6,7 +6,6 @@
     box-sizing: border-box;
 }
 body{
-    /* background-color: #009579; */
     background: url("images/b_diary-of-discoveries.jpg") top center / cover no-repeat;
     font-family: 'Saira', sans-serif;
 }
@@ -32,15 +31,7 @@ body{
     left: -80px;
     top: -80px;
 }
-.shape:last-child{
-    background: linear-gradient(
-        to right,
-        #ff512f,
-        #f09819
-    );
-    right: -30px;
-    bottom: -80px;
-}
+
 form{
     height: 520px;
     width: 400px;
@@ -56,7 +47,6 @@ form{
     padding: 50px 35px;
 }
 form *{
-    font-family: 'Poppins',sans-serif;
     color: #ffffff;
     letter-spacing: 0.5px;
     outline: none;

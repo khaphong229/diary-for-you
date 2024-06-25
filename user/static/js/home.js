@@ -1,4 +1,3 @@
-
 /// get api weather
 const display = (data) => {
   let address = document.getElementById("address");
@@ -14,22 +13,22 @@ const display = (data) => {
   sessionStorage.setItem('weather_icon', data.current.condition.icon);
   sessionStorage.setItem('weather_localtime', data.location.localtime);
   
-  updateDisplayTime(data.location.localtime);
+  update_display_time(data.location.localtime);
   img_weather.src = data.current.condition.icon;
 };
 
-const updateDisplayTime = (localtime) => {
+const update_display_time = (localtime) => {
   let time = document.getElementById("time");
-  let currentTime = new Date();
-  let [datePart, timePart] = localtime.split(" ");
-  let [year, month, day] = datePart.split("-");
-  let formattedDate = `${currentTime.getHours()}:${currentTime.getMinutes()} - ${day}/${month}/${year}`;
-  time.innerText = formattedDate;
+  let time_now = new Date();
+  let [date, timePart] = localtime.split(" ");
+  let [year, month, day] = date.split("-");
+  let format_date = `${time_now.getHours()}:${time_now.getMinutes()} - ${day}/${month}/${year}`;
+  time.innerText = format_date;
 };
 
 const getApi = () => {
   fetch("https://api.weatherapi.com/v1/current.json?q=HaNoi&key=4ae04986f307408ba4222015240104")
-      .then((req) => req.json())
+      .then((res) => res.json())
       .then((data) => {
           display(data);
           console.log(data);
@@ -39,7 +38,7 @@ const getApi = () => {
       });
 };
 
-const loadLocalData = () => {
+const load_data = () => {
   let address = sessionStorage.getItem('weather_address');
   let temp = sessionStorage.getItem('weather_temp');
   let icon = sessionStorage.getItem('weather_icon');
@@ -49,19 +48,22 @@ const loadLocalData = () => {
       document.getElementById("address").innerText = address;
       document.getElementById("temperature").innerText = temp;
       document.getElementById("img-weather").src = icon;
-      updateDisplayTime(localtime);
+      update_display_time(localtime);
   } else {
       getApi();
   }
 };
 
-loadLocalData();
+load_data();
 setInterval(() => {
   let localtime = sessionStorage.getItem('weather_localtime');
   if (localtime) {
-      updateDisplayTime(localtime);
+      update_display_time(localtime);
   }
 }, 60000);
+
+
+
 
 // edit the ui of list diaries
 const handleDataDiary = () => {
@@ -71,7 +73,6 @@ const handleDataDiary = () => {
     let month_input = document.getElementsByClassName("created-month")[i];
     let title_input = document.getElementsByClassName("title-diary")[i];
     let content_input = document.getElementsByClassName("content-diary")[i];
-
     let day = day_input.innerText.split(" ")[1].split(",")[0];
     let month = day_input.innerText.split(" ")[0];
     let title = title_input.innerText.slice(0, 50);
@@ -85,20 +86,20 @@ const handleDataDiary = () => {
 const timeline=()=>{
   document.addEventListener("DOMContentLoaded", function() {
     const diaryList = document.querySelectorAll(".list-diaries .diary");
-    let lastDateClass = "";
+    let last_date = "";
     
     diaryList.forEach(diary => {
-        const dateElement = diary.querySelector(".time-diary");
-        let dateClass=dateElement.innerText;
-        if (dateClass === lastDateClass) {
+        const date_element = diary.querySelector(".time-diary");
+        let dateClass=date_element.innerText;
+        if (dateClass === last_date) {
           const newDiv = document.createElement('div');
           newDiv.className = 'flex-container';
           newDiv.style.flex = '1';
           const timeDiary = diary.querySelector('.time-diary');
           diary.insertBefore(newDiv, timeDiary); 
-            dateElement.style.display = 'none';
+            date_element.style.display = 'none';
         } else {
-            lastDateClass = dateClass;
+            last_date = dateClass;
         }
     });
   });
@@ -106,21 +107,24 @@ const timeline=()=>{
 handleDataDiary();
 timeline();
 
-const getSaveUserName = () => {
-  let nameUserElement = document.getElementsByClassName('name-user')[0];
-  let nameUser = nameUserElement ? nameUserElement.innerText : '';
-  let userId=document.getElementById('user_id_curr') ? document.getElementById('user_id_curr').value : '';
-  if (nameUser && (!sessionStorage.getItem('user-name') || sessionStorage.getItem('user-name') !== nameUser)) {
-    sessionStorage.setItem('user-name', nameUser);
-    sessionStorage.setItem('user_id',userId);
+
+// get current user name and user id
+const get_username_userid_save = () => {
+  let name_user_element = document.getElementsByClassName('name-user')[0];
+  let name_user = name_user_element ? name_user_element.innerText : '';
+  let user_id=document.getElementById('user_id_curr') ? document.getElementById('user_id_curr').value : '';
+  // check if value user name empty or get in session doesnt have or current name diffence with name user 
+  if (name_user && (!sessionStorage.getItem('user-name') || sessionStorage.getItem('user-name') !== name_user)) {
+    sessionStorage.setItem('user-name', name_user);
+    sessionStorage.setItem('user_id',user_id);
   }
-  if (!nameUser) {
+  if (!name_user) {
     let user = sessionStorage.getItem('user-name');
     console.log(user);
     if (user) {
-      nameUserElement.innerText = user;
+      name_user_element.innerText = user;
     }
   }
 };
 
-getSaveUserName();
+get_username_userid_save();

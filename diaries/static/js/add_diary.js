@@ -1,5 +1,5 @@
 function addDiary(event) {
-    event.preventDefault();
+    event.preventDefault(); // ngăn chặn các hành động mặc định của sự kiện đó
 
     const form = document.getElementById('diaryForm');
     const formData = new FormData(form);
@@ -14,7 +14,7 @@ function addDiary(event) {
         },
         body: formData
     })
-    .then(response => response.json())
+    .then(res => res.json())
     .then(data => {
         if (data.message) {
             document.getElementById('id_content').value='';
@@ -30,6 +30,7 @@ function addDiary(event) {
                 error.innerText = `${key}: ${value}`;
                 errorDiv.appendChild(error);
             }
+            // alert('Added diary failed. Please try again!')
         }
     })
     .catch(error => console.error('Error:', error));
@@ -42,7 +43,7 @@ function getCookie(name) {
         for (let i = 0; i < cookies.length; i++) {
             const cookie = cookies[i].trim();
             if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1)); //decode if in case csrf in the encodation status
                 break;
             }
         }

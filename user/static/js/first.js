@@ -1,15 +1,15 @@
-let slideIndex = 0;
-showSlides();
+let slide_index = 0;
+show_slide();
 
-function showSlides() {
+function show_slide() {
     const slides = document.getElementsByClassName("mySlides");
     for (let i = 0; i < slides.length; i++) {
         slides[i].classList.remove("show");
     }
-    slideIndex++;
-    if (slideIndex > slides.length) { slideIndex = 1 }
-    slides[slideIndex - 1].classList.add("show");
-    setTimeout(showSlides, 3000);
+    slide_index++;
+    if (slide_index > slides.length) { slide_index = 1 }
+    slides[slide_index - 1].classList.add("show");
+    setTimeout(show_slide, 3000);
 }
 
 var headingElement = document.getElementById("text-heading");

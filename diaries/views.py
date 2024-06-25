@@ -32,7 +32,7 @@ class AddDiaryView(CreateView):
         combined_datetime = datetime.datetime.combine(selected_date, current_time_vn)
         form.instance.created_at = combined_datetime
         self.object = form.save()
-        if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        if self.request.headers.get('x-requested-with') == 'XMLHttpRequest': ## check request ajax from javascript ??
             return JsonResponse({'message': 'Diary created successfully!', 'redirect_url': str(self.success_url)}, status=200)
         else:
             return super().form_valid(form)
@@ -46,7 +46,7 @@ class AddDiaryView(CreateView):
 class DeleteDiaryView(DeleteView):
     model = Diary
     success_url = reverse_lazy('home')
-
+    
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
         self.object.delete()
@@ -75,7 +75,6 @@ class UpdateDiaryView(UpdateView):
                 created_at = datetime.datetime.combine(created_date, current_time)
                 diary.created_at = timezone.make_aware(created_at, timezone.get_default_timezone())
             diary.save()
-            # diary = form.save()
             return JsonResponse({'message': 'Diary updated successfully!', 'title': diary.title, 'content': diary.content, 'created_at':diary.created_at}, status=200)
         return JsonResponse({'errors': form.errors}, status=400)
     

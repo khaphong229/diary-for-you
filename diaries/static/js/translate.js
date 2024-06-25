@@ -76,8 +76,8 @@ async function saveTranslation(diaryId, language, translatedText) {
             console.error('Failed to save translation.');
         }
 
-    } catch (error) {
-        console.error('Error:', error);
+    } catch (err) {
+        console.error('Error:', err);
     }
 }
 const countries={
@@ -180,36 +180,49 @@ const countries={
     "zu": "Zulu"
 }
 
-const fromText=document.getElementById('diary-content');
-const toText=document.getElementById('translated-content');
+const from_text=document.getElementById('diary-content');
+const to_text=document.getElementById('translated-content');
 const icons=document.querySelectorAll('.language i');
-const selectTag = document.querySelectorAll("select");
-selectTag.forEach((tag,id)=>{
+const selected_tag = document.querySelectorAll("select");
+selected_tag.forEach((tag_now,id)=>{
     for(let country_code in countries){
-        let selected=id==0 ? country_code == 'vi' ? 'selected' : '' : country_code == 'en' ? 'selected' : '';
+        // let selected=id==0 ? country_code == 'vi' ? 'selected' : '' : country_code == 'en' ? 'selected' : '';
+        if (id == 0) {
+            if (country_code == 'vi') {
+                selected = 'selected';
+            } else {
+                selected = '';
+            }
+        } else {
+            if (country_code == 'en') {
+                selected = 'selected';
+            } else {
+                selected = '';
+            }
+        }
         let option=`<option ${selected} value="${country_code}">${countries[country_code]}</option>`;
-        tag.insertAdjacentHTML('beforeend',option);
+        tag_now.insertAdjacentHTML('beforeend',option); // chèn vào sau phần tử cuối dùng của nó
     }
 })
 icons.forEach(icon => {
     icon.addEventListener('click',({target})=>{
-        if(!fromText.innerText || !toText.innerText) return;
+        if(!from_text.innerText || !to_text.innerText) return;
         if(target.classList.contains('fa-copy')){
             if(target.id=='from'){
-                navigator.clipboard.writeText(fromText.innerText);
+                navigator.clipboard.writeText(from_text.innerText); // nã text vô clipboard
             }else{
-                navigator.clipboard.writeText(toText.innerText);
+                navigator.clipboard.writeText(to_text.innerText);
             }
         }else{
             let res;
             if(target.id=='from'){
-                res=new SpeechSynthesisUtterance(fromText.innerText);
-                res.lang=selectTag[0].value;
+                res=new SpeechSynthesisUtterance(from_text.innerText);
+                res.lang=selected_tag[0].value;
             }else{
-                res=new SpeechSynthesisUtterance(toText.innerText);
-                res.lang=selectTag[1].value;
+                res=new SpeechSynthesisUtterance(to_text.innerText);
+                res.lang=selected_tag[1].value;
             }
-            speechSynthesis.speak(res);
+            speechSynthesis.speak(res); // phát âm bằng api web speech
         }
     })
 });

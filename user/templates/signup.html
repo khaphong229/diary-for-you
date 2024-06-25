@@ -2,20 +2,11 @@
 <html lang="en">
 {% load static %}
 <head>
-    <!-- Design by foolishdeveloper.com -->
     <title>Signup Page</title>
     <link rel="icon" type="image/x-icon" src="{% static "images/logo.png" %}">
     <link rel="stylesheet" type="text/css" href="{% static "css/signup.css" %}?{% now "U" %}">
-    <!--Stylesheet-->
-    {% comment %} <style media="screen">
-
-    </style> {% endcomment %}
 </head>
 <body>
-{% comment %} <div class="background">
-    <div class="shape"></div>
-    <div class="shape"></div>
-</div> {% endcomment %}
 <div class="container">
     <form action="" method="post">
         {% csrf_token %}
@@ -31,13 +22,12 @@
         <input type="text" placeholder="Username" name="username" id="username">
     
         <label for="email">Email</label>
-        <input type="email" placeholder="Email or Phone" name="email" id="email">
+        <input type="email" placeholder="Email" name="email" id="email">
     
         <label for="password1">Password</label>
         <input type="password" placeholder="Password" id="password1" name="password1">
     
-    
-        <label for="password2">Confrom Password</label>
+        <label for="password2">Confirm Password</label>
         <input type="password" placeholder="Confirm Password" id="password2" name="password2">
         <button type="submit">Signup</button>
         

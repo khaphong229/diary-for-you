@@ -1,7 +1,7 @@
 function deleteDiary(diaryId) {
   const csrftoken = getCookie("csrftoken");
 
-  if (confirm("Are you sure you want to delete this diary entry?")) {
+  if (confirm("Are you sure you want to delete this diary?")) {
     fetch(`/delete-diary/${diaryId}/`, {
       method: "DELETE",
       headers: {
@@ -9,7 +9,7 @@ function deleteDiary(diaryId) {
         "X-Requested-With": "XMLHttpRequest",
       },
     })
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((data) => {
         if (data.message) {
           alert(data.message);
@@ -18,7 +18,7 @@ function deleteDiary(diaryId) {
           alert("An error occurred.");
         }
       })
-      .catch((error) => console.error("Error:", error));
+      .catch((err) => console.error("Error:", err));
   }
 }
 

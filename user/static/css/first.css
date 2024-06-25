@@ -9,7 +9,6 @@ body, html {
     font-family: Arial, sans-serif;
     overflow: hidden;
 }
-
 .slideshow-container {
     position: relative;
     width: 100%;
@@ -55,7 +54,7 @@ body, html {
     text-shadow: 2px 2px #363636;
     overflow: hidden;
     white-space: nowrap;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.05em;
     animation: typing 2.5s steps(40, end) infinite alternate, blink-caret 0.75s step-end infinite;
 }
 

@@ -19,6 +19,7 @@ td {
     padding: 12px 15px;
     border: 1px solid #dddddd;
     transition: 0.2s;
+    text-align: center;
 }
 tbody tr {
     border-bottom: 1px solid #dddddd;

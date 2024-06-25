@@ -1,7 +1,7 @@
 const csrftoken = getCookie('csrftoken');
 
 document.addEventListener('mouseup', function(event) {
-    let selectedText = window.getSelection().toString().trim();
+    let selectedText = window.getSelection().toString().trim(); //lấy từ đc bôi đen
     if (selectedText.length > 0 && !event.target.closest('#word-popup')) {
         fetch_meaning(selectedText, event);
     }
@@ -10,6 +10,7 @@ document.addEventListener('mouseup', function(event) {
 document.addEventListener('mousedown', function(event) {
     let popup = document.getElementById('word-popup');
     if (popup && !popup.contains(event.target)) {
+        //check popup đã tồn tại và sk ko xảy ra bên trong
         closePopup();
     }
 });
@@ -45,7 +46,7 @@ const show_popup = (word, meaning, pronunciation, audio, examples, mouseEvent) =
     popup.style.backgroundColor = 'white';
     popup.style.border = '1px solid black';
     popup.style.padding = '10px';
-    popup.style.zIndex = 1000;
+    popup.style.zIndex = 1;
 
     popup.innerHTML = `
         <h3>${word}</h3>
@@ -53,7 +54,6 @@ const show_popup = (word, meaning, pronunciation, audio, examples, mouseEvent) =
         <p>Pronunciation: ${pronunciation}</p>
         <audio controls>
             <source src="${audio}" type="audio/mp3">
-            Your browser does not support the audio element.
         </audio>
         <p>Example: ${examples}</p>
         <button id="save-word-btn">Save</button>
@@ -62,7 +62,7 @@ const show_popup = (word, meaning, pronunciation, audio, examples, mouseEvent) =
     document.body.appendChild(popup);
 
     document.getElementById('save-word-btn').addEventListener('click', function(event) {
-        event.stopPropagation();
+        event.stopPropagation(); // ngăn chặn sự kiện lan truyền từ phần tử hiện tại lên phần tử cha
         saveWord(word, meaning, pronunciation, audio, examples);
     });
 }

@@ -24,7 +24,7 @@ document.getElementById('edit-vocabulary-form').addEventListener('submit', funct
             alert('Vocabulary updated successfully!');
             window.location.href = 'http://127.0.0.1:8000/list-vocabs/'; 
         } else {
-            alert('Failed to update vocabulary. ' + JSON.stringify(data.errors));
+            alert('Failed to update vocabulary.');
         }
     })
     .catch(error => console.error('Error:', error));

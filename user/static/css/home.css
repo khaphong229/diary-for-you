@@ -104,7 +104,6 @@ hr{
 #main .main-top{
     background-color: #3f444c;
     width: 100%;
-    /* height: 10%; */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -114,7 +113,6 @@ hr{
     top: 0;
     right: 0;
     left: 0;
-    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 .add-diary{
     color: #eceef0;
@@ -189,11 +187,9 @@ hr{
     flex-direction: row;
     width: 90%;
     height: 100px;
-    /* background-color: #eceef0; */
     border-radius: 10px;
     margin: 10px 0px;
     gap: 20px;
-    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 .list-diaries{
     display: flex;
@@ -201,7 +197,6 @@ hr{
     align-items: center;
 }
 .main-body{
-    /* margin-top: 110px; */
     padding: 4% 0;
 }
 .diary .time-diary{

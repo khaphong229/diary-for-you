@@ -9,16 +9,15 @@ from diaries.models import Diary
 from django.views.generic import DetailView
 # Create your views here.
 
-
-@login_required(login_url='login')
+@login_required(login_url='login') ### ensure user must login if not login redirect user to the web login to input username, password
 def HomePage(request):
     if request.user.is_authenticated:
-        username = request.user.username
+        username = request.user.username #get username and user id about current user
         user_id=request.user.id
-        list_diaries=Diary.objects.filter(user=request.user).order_by('-created_at')
+        list_diaries=Diary.objects.filter(user=request.user).order_by('-created_at') ### get only diaries of current user
         return render(request, 'home.html', {'diaries': list_diaries,
                                              'username':username,
-                                             'user_id':user_id},)
+                                             'user_id':user_id})
     else:
         return render(request, 'home.html', {'message': 'Username not found'})
 
@@ -29,7 +28,7 @@ def SignupPage(request):
         pass1=request.POST.get('password1')
         pass2=request.POST.get('password2')
         if pass1!=pass2:
-            messages.error(request,'password and confirm password is not the same')
+            messages.error(request,'Password and confirm password is not the same. Try again!')
             return redirect('signup')
         my_user=User.objects.create_user(uname, email, pass1)
         my_user.save()
@@ -46,7 +45,7 @@ def LoginPage(request):
             login(request,user)
             return redirect('home')
         else:
-            messages.error(request,'user name or password is wrong')
+            messages.error(request,'User name or password is wrong. Please try again!')
             return redirect('login')
     return render(request,'login.html')
 

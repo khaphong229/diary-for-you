@@ -7,10 +7,6 @@
     <link rel="stylesheet" href="{% static "css/login.css" %}?{% now "U" %}">
 </head>
 <body>
-{% comment %} <div class="background">
-    <div class="shape"></div>
-    <div class="shape"></div>
-</div> {% endcomment %}
 <form method="post">
     <h3>Login Here</h3>
     {% csrf_token %}
@@ -28,11 +24,7 @@
     <input type="password" placeholder="Password" id="password" name="pass">
 
     <button type="submit">Log In</button>
-    <!-- <input type="button" value=""> -->
-    <!-- <div class="social">
-      <div class="go"><i class="fab fa-google"></i>  Google</div>
-      <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
-    </div> -->
+    
     <div class='signup'>
         <a href="{% url 'signup' %}">Create a account</a>
     </div>
