@@ -53,6 +53,7 @@ def LogoutPage(request):
     logout(request)
     return redirect('login')
 
+@login_required
 def ListDiaries(request):
     list_diaries=Diary.objects.all()
     return render(request, 'home.html', {'diaries': list_diaries})

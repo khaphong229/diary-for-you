@@ -45,8 +45,10 @@
     background-color: #fff;
     height: auto;
     margin: 20px 0px;
-    padding: 20px;
+    padding: 20px 10%;
     transition: 0.3s;
+    white-space: pre-wrap; 
+    word-wrap: break-word;
 }
 h3:hover, #diary-content:hover{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

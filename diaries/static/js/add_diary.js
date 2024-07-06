@@ -23,33 +23,26 @@ function addDiary(event) {
             let back_page=window.location.href.split('/add/')[0]+'/home/';
             window.location=back_page;
         } else {
-            const errorDiv = document.getElementById('errors');
-            errorDiv.innerHTML = '';
-            for (const [key, value] of Object.entries(data)) {
-                const error = document.createElement('p');
-                error.innerText = `${key}: ${value}`;
-                errorDiv.appendChild(error);
-            }
-            // alert('Added diary failed. Please try again!')
+            alert('Added diary failed. Please try again!')
         }
     })
     .catch(error => console.error('Error:', error));
 }
 
 function getCookie(name) {
-    let cookieValue = null;
+    let cookie_val = null;
     if (document.cookie && document.cookie !== '') {
         const cookies = document.cookie.split(';');
         for (let i = 0; i < cookies.length; i++) {
             const cookie = cookies[i].trim();
             if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1)); //decode if in case csrf in the encodation status
+                cookie_val = decodeURIComponent(cookie.substring(name.length + 1)); //decode if in case csrf in the encodation status
                 break;
             }
         }
     }
-    console.log(cookieValue);
-    return cookieValue;
+    console.log(cookie_val);
+    return cookie_val;
 }
 
 document.addEventListener('DOMContentLoaded', (e) => {

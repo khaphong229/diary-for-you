@@ -15,6 +15,8 @@ from .forms import DiaryForm
 from django.utils import timezone
 import datetime
 import pytz
+from django.views.decorators.http import require_GET
+import datetime
 # Create your views here.
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -114,3 +116,24 @@ class SaveTranslationView(View):
         )
 
         return JsonResponse({'message': 'Translation saved successfully!'}, status=200)
+    
+@require_GET
+def search_diaries(request):
+    date_str = request.GET.get('date')
+    try:
+        search_date = datetime.datetime.strptime(date_str, '%Y-%m-%d').date()
+        
+        diaries = Diary.objects.filter(
+            created_at__date=search_date,
+            user=request.user
+        ).order_by('-created_at')
+
+        data = [{
+            'diary_id': diary.diary_id,
+            'title': diary.title,
+            'content': diary.content[0:80],
+            'created_at': diary.created_at.strftime('%Y-%m-%d %H:%M:%S')
+        } for diary in diaries]
+        return JsonResponse(data, safe=False)
+    except ValueError:
+        return JsonResponse({'error': 'Invalid date format'}, status=400)

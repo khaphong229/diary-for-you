@@ -130,3 +130,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL='/images/'
 STATICFILES_DIRS=(os.path.join(BASE_DIR,'user\static'),)
+
+# SECURE_SSL_REDIRECT = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True

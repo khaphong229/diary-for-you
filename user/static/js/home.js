@@ -110,8 +110,8 @@ timeline();
 
 // get current user name and user id
 const get_username_userid_save = () => {
-  let name_user_element = document.getElementsByClassName('name-user')[0];
-  let name_user = name_user_element ? name_user_element.innerText : '';
+  let user_name_root = document.getElementsByClassName('name-user')[0];
+  let name_user = user_name_root ? user_name_root.innerText : '';
   let user_id=document.getElementById('user_id_curr') ? document.getElementById('user_id_curr').value : '';
   // check if value user name empty or get in session doesnt have or current name diffence with name user 
   if (name_user && (!sessionStorage.getItem('user-name') || sessionStorage.getItem('user-name') !== name_user)) {
@@ -122,7 +122,7 @@ const get_username_userid_save = () => {
     let user = sessionStorage.getItem('user-name');
     console.log(user);
     if (user) {
-      name_user_element.innerText = user;
+      user_name_root.innerText = user;
     }
   }
 };

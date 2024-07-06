@@ -244,6 +244,9 @@ hr{
     transition: 0.3s;
 }
 .diary .pre-content-diary:hover{
+    cursor: pointer;
+}
+.diary .pre-content-diary:hover{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .pre-content-diary .title-diary{
@@ -294,4 +297,25 @@ hr{
 .handle-diary > a:nth-child(2):hover{
     background-color: #0097ff;
     color: #eceef0;
+}
+.task-bar {
+    position: relative;
+}
+
+#calendar-popup {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    width: 300px; /* Điều chỉnh kích thước theo nhu cầu */
+}
+
+#date-search {
+    margin-top: 10px;
+    width: 100%;
+    padding: 5px;
 }
