@@ -66,7 +66,7 @@ setInterval(() => {
 
 
 // edit the ui of list diaries
-const handleDataDiary = () => {
+const handle_diary = () => {
   let numbers_diary = document.getElementsByClassName("diary").length;
   for (let i = 0; i < numbers_diary; i++) {
     let day_input = document.getElementsByClassName("created-day")[i];
@@ -83,7 +83,7 @@ const handleDataDiary = () => {
     title_input.innerText = title;
   }
 };
-const timeline=()=>{
+const edit_timeline=()=>{
   document.addEventListener("DOMContentLoaded", function() {
     const diaryList = document.querySelectorAll(".list-diaries .diary");
     let last_date = "";
@@ -104,8 +104,8 @@ const timeline=()=>{
     });
   });
 }
-handleDataDiary();
-timeline();
+handle_diary();
+edit_timeline();
 
 
 // get current user name and user id

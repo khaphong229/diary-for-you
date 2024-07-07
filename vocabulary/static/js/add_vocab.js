@@ -1,5 +1,5 @@
-document.getElementById('vocabulary-form').addEventListener('submit', function(event) {
-    event.preventDefault();
+document.getElementById('vocabulary-form').addEventListener('submit', function(e) {
+    e.preventDefault();
     
     let formData = {
         user_id: document.getElementById('current-user-id').value,
@@ -18,7 +18,7 @@ document.getElementById('vocabulary-form').addEventListener('submit', function(e
         },
         body: JSON.stringify(formData)
     })
-    .then(response => response.json())
+    .then(res => res.json())
     .then(data => {
         if (data.success) {
             alert('Word saved successfully!');
@@ -28,7 +28,7 @@ document.getElementById('vocabulary-form').addEventListener('submit', function(e
             alert('Failed to save word. ' + JSON.stringify(data.errors));
         }
     })
-    .catch(error => console.error('Error:', error));
+    .catch(err => console.log(err));
 });
 
 function getCookie(name) {
@@ -58,14 +58,14 @@ function deleteVocabulary(vocabularyId) {
                 'Content-Type': 'application/json'
             }
         })
-        .then(response => {
-            if (response.ok) {
+        .then(res => {
+            if (res.ok) {
                 alert('Vocabulary deleted successfully!');
                 window.location.reload();
             } else {
                 alert('Failed to delete vocabulary.');
             }
         })
-        .catch(error => console.error('Error:', error));
+        .catch(err => console.log(err));
     }
 }

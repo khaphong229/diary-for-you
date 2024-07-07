@@ -1,4 +1,4 @@
-async function translateDiary(diaryId) {
+const translateDiary=async(diaryId) => {
     const language = document.getElementById('language').value;
     const language_from = document.getElementById('language_from').value;
     const textToTranslate = document.getElementById('diary-content').innerText;
@@ -22,8 +22,8 @@ async function translateDiary(diaryId) {
     };
 
     try {
-        const response = await fetch(url, options);
-        const result = await response.json();
+        const res = await fetch(url, options);
+        const result = await res.json();
         const translatedText = result.data.translations[0].translatedText;
 
         document.getElementById('translated-content').innerText = translatedText;
@@ -51,7 +51,7 @@ function getCookie(name) {
     return cookieValue;
 }
 
-async function saveTranslation(diaryId, language, translatedText) {
+const saveTranslation= async(diaryId, language, translatedText) => {
     const csrftoken = getCookie('csrftoken');
 
     const data = {
@@ -61,7 +61,7 @@ async function saveTranslation(diaryId, language, translatedText) {
     };
 
     try {
-        const response = await fetch(`/diary/save-translation/`, {
+        const res = await fetch(`/diary/save-translation/`, {
             method: 'POST',
             headers: {
                 'X-CSRFToken': csrftoken,
@@ -70,7 +70,7 @@ async function saveTranslation(diaryId, language, translatedText) {
             body: JSON.stringify(data)
         });
 
-        if (response.ok) {
+        if (res.ok) {
             console.log('Translation saved successfully.');
         } else {
             console.error('Failed to save translation.');

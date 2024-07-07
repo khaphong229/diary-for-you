@@ -1,5 +1,5 @@
-document.getElementById('edit-vocabulary-form').addEventListener('submit', function(event) {
-    event.preventDefault();
+document.getElementById('edit-vocabulary-form').addEventListener('submit', function(e) {
+    e.preventDefault();
 
     let vocabularyId = document.getElementById('vocabulary-id').value;
     let formData = {
@@ -18,7 +18,7 @@ document.getElementById('edit-vocabulary-form').addEventListener('submit', funct
         },
         body: JSON.stringify(formData)
     })
-    .then(response => response.json())
+    .then(res => res.json())
     .then(data => {
         if (data.success) {
             alert('Vocabulary updated successfully!');
@@ -27,7 +27,7 @@ document.getElementById('edit-vocabulary-form').addEventListener('submit', funct
             alert('Failed to update vocabulary.');
         }
     })
-    .catch(error => console.error('Error:', error));
+    .catch(err => console.log(err));
 });
 
 function getCookie(name) {

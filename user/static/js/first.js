@@ -12,7 +12,7 @@ function show_slide() {
     setTimeout(show_slide, 3000);
 }
 
-var headingElement = document.getElementById("text-heading");
+var heading = document.getElementById("text-heading");
 
 var list_heading_text = [
   "Diary For You",
@@ -28,7 +28,7 @@ function getRandomInt(min, max) {
 
 function get_heading() {
   var index = getRandomInt(0, list_heading_text.length);
-  headingElement.innerHTML = list_heading_text[index];
+  heading.innerHTML = list_heading_text[index];
 }
 
 setInterval(get_heading, 3000);

@@ -18,7 +18,7 @@ function deleteDiary(diaryId) {
           alert("An error occurred.");
         }
       })
-      .catch((err) => console.error("Error:", err));
+      .catch((err) => console.log(err));
   }
 }
 

@@ -1,21 +1,21 @@
 const csrftoken = getCookie('csrftoken');
 
-document.addEventListener('mouseup', function(event) {
+document.addEventListener('mouseup', function(e) {
     let selectedText = window.getSelection().toString().trim(); //lấy từ đc bôi đen
-    if (selectedText.length > 0 && !event.target.closest('#word-popup')) {
-        fetch_meaning(selectedText, event);
+    if (selectedText.length > 0 && !e.target.closest('#word-popup')) {
+        fetch_meaning(selectedText, e);
     }
 });
 
-document.addEventListener('mousedown', function(event) {
+document.addEventListener('mousedown', function(e) {
     let popup = document.getElementById('word-popup');
-    if (popup && !popup.contains(event.target)) {
+    if (popup && !popup.contains(e.target)) {
         //check popup đã tồn tại và sk ko xảy ra bên trong
         closePopup();
     }
 });
 
-function fetch_meaning(word, event){
+function fetch_meaning(word, e){
     fetch(`/trans-word/`,{
         method:'POST',
         headers:{
@@ -28,7 +28,7 @@ function fetch_meaning(word, event){
     .then(res=>res.json())
     .then(data=>{
         if(data.success){
-            show_popup(word, data.meaning, data.pronunciation, data.audio, data.examples, event);
+            show_popup(word, data.meaning, data.pronunciation, data.audio, data.examples, e);
         }else{
             alert('Word not found.')
         }
@@ -61,8 +61,8 @@ const show_popup = (word, meaning, pronunciation, audio, examples, mouseEvent) =
 
     document.body.appendChild(popup);
 
-    document.getElementById('save-word-btn').addEventListener('click', function(event) {
-        event.stopPropagation(); // ngăn chặn sự kiện lan truyền từ phần tử hiện tại lên phần tử cha
+    document.getElementById('save-word-btn').addEventListener('click', function(e) {
+        e.stopPropagation(); // ngăn chặn sự kiện lan truyền từ phần tử hiện tại lên phần tử cha
         saveWord(word, meaning, pronunciation, audio, examples);
     });
 }
@@ -92,7 +92,7 @@ function saveWord(word, meaning, pronunciation, audio, examples) {
             example_sentence: examples
         })
     })
-    .then(response => response.json())
+    .then(res => res.json())
     .then(data => {
         if (data.success) {
             alert('Word saved successfully!');
@@ -101,7 +101,7 @@ function saveWord(word, meaning, pronunciation, audio, examples) {
             alert('Failed to save word.');
         }
     })
-    .catch(error => console.error('Error:', error));
+    .catch(err => console.log(err));
 }
 
 function getCookie(name){

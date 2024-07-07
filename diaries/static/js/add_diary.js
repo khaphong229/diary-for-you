@@ -1,5 +1,5 @@
-function addDiary(event) {
-    event.preventDefault(); // ngăn chặn các hành động mặc định của sự kiện đó
+function addDiary(e) {
+    e.preventDefault(); // ngăn chặn các hành động mặc định của sự kiện đó
 
     const form = document.getElementById('diaryForm');
     const formData = new FormData(form);
@@ -26,7 +26,7 @@ function addDiary(event) {
             alert('Added diary failed. Please try again!')
         }
     })
-    .catch(error => console.error('Error:', error));
+    .catch(err => console.log(err));
 }
 
 function getCookie(name) {

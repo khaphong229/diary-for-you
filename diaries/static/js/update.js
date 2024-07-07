@@ -10,9 +10,13 @@ function updateDiary(diaryId) {
             'X-Requested-With': 'XMLHttpRequest',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({title: title, content: content,created_at:created})
+        body: JSON.stringify({
+                            title: title, 
+                            content: content,
+                            created_at:created
+                            })
     })
-    .then(response => response.json())
+    .then(res => res.json())
     .then(data => {
         if (data.message) {
             alert(data.message);
@@ -22,7 +26,7 @@ function updateDiary(diaryId) {
             alert('An error occurred.');
         }
     })
-    .catch(error => console.error('Error:', error));
+    .catch(err => console.log(err));
 }
 
 function getCookie(name) {
