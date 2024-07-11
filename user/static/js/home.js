@@ -66,29 +66,29 @@ setInterval(() => {
 
 
 // edit the ui of list diaries
-const handle_diary = () => {
-  let numbers_diary = document.getElementsByClassName("diary").length;
+const handle_diary=()=> {
+  let numbers_diary=document.getElementsByClassName("diary").length;
   for (let i = 0; i < numbers_diary; i++) {
-    let day_input = document.getElementsByClassName("created-day")[i];
-    let month_input = document.getElementsByClassName("created-month")[i];
-    let title_input = document.getElementsByClassName("title-diary")[i];
-    let content_input = document.getElementsByClassName("content-diary")[i];
-    let day = day_input.innerText.split(" ")[1].split(",")[0];
-    let month = day_input.innerText.split(" ")[0];
-    let title = title_input.innerText.slice(0, 50);
+    let day_input=document.getElementsByClassName("created-day")[i];
+    let month_input=document.getElementsByClassName("created-month")[i];
+    let title_input=document.getElementsByClassName("title-diary")[i];
+    let content_input=document.getElementsByClassName("content-diary")[i];
+    let day=day_input.innerText.split(" ")[1].split(",")[0];
+    let month=day_input.innerText.split(" ")[0];
+    let title=title_input.innerText.slice(0, 50);
     let content = content_input.innerText.slice(0, 100) + "... ";
-    day_input.innerText = day;
-    month_input.innerText = month;
-    content_input.innerText = content;
-    title_input.innerText = title;
+    day_input.innerText=day;
+    month_input.innerText=month;
+    content_input.innerText=content;
+    title_input.innerText=title;
   }
 };
 const edit_timeline=()=>{
   document.addEventListener("DOMContentLoaded", function() {
-    const diaryList = document.querySelectorAll(".list-diaries .diary");
-    let last_date = "";
+    const diaryList=document.querySelectorAll(".list-diaries .diary");
+    let last_date="";
     
-    diaryList.forEach(diary => {
+    diaryList.forEach(diary=>{
         const date_element = diary.querySelector(".time-diary");
         let dateClass=date_element.innerText;
         if (dateClass === last_date) {

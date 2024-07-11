@@ -1,13 +1,13 @@
-const csrftoken = getCookie('csrftoken');
+const csrftoken=getCookie('csrftoken');
 
-document.addEventListener('mouseup', function(e) {
-    let selectedText = window.getSelection().toString().trim(); //lấy từ đc bôi đen
+document.addEventListener('mouseup',function(e) {
+    let selectedText=window.getSelection().toString().trim(); //lấy từ đc bôi đen
     if (selectedText.length > 0 && !e.target.closest('#word-popup')) {
         fetch_meaning(selectedText, e);
     }
 });
 
-document.addEventListener('mousedown', function(e) {
+document.addEventListener('mousedown',function(e) {
     let popup = document.getElementById('word-popup');
     if (popup && !popup.contains(e.target)) {
         //check popup đã tồn tại và sk ko xảy ra bên trong
@@ -33,22 +33,22 @@ function fetch_meaning(word, e){
             alert('Word not found.')
         }
     })
-    .catch(err=> console.error('Error',err));
+    .catch(err=> console.error(err));
 }
 
-const show_popup = (word, meaning, pronunciation, audio, examples, mouseEvent) => {
+const show_popup= (word, meaning, pronunciation, audio, examples, mouseEvent) => {
     closePopup();
-    let popup = document.createElement('div');
-    popup.id = 'word-popup';
-    popup.style.position = 'absolute';
-    popup.style.left = `${mouseEvent.pageX}px`;
-    popup.style.top = `${mouseEvent.pageY}px`;
-    popup.style.backgroundColor = 'white';
-    popup.style.border = '1px solid black';
-    popup.style.padding = '10px';
-    popup.style.zIndex = 1;
+    let popup=document.createElement('div');
+    popup.id='word-popup';
+    popup.style.position='absolute';
+    popup.style.left=`${mouseEvent.pageX}px`;
+    popup.style.top=`${mouseEvent.pageY}px`;
+    popup.style.backgroundColor='white';
+    popup.style.border='1px solid black';
+    popup.style.padding='10px';
+    popup.style.zIndex=1;
 
-    popup.innerHTML = `
+    popup.innerHTML= `
         <h3>${word}</h3>
         <p>Meaning: ${meaning}</p>
         <p>Pronunciation: ${pronunciation}</p>
@@ -67,9 +67,9 @@ const show_popup = (word, meaning, pronunciation, audio, examples, mouseEvent) =
     });
 }
 
-function closePopup() {
-    let popup = document.getElementById('word-popup');
-    if (popup) {
+function closePopup(){
+    let popup=document.getElementById('word-popup');
+    if(popup) {
         popup.remove();
     }
 }
@@ -92,8 +92,8 @@ function saveWord(word, meaning, pronunciation, audio, examples) {
             example_sentence: examples
         })
     })
-    .then(res => res.json())
-    .then(data => {
+    .then(res=>res.json())
+    .then(data=>{
         if (data.success) {
             alert('Word saved successfully!');
             closePopup();
@@ -101,7 +101,7 @@ function saveWord(word, meaning, pronunciation, audio, examples) {
             alert('Failed to save word.');
         }
     })
-    .catch(err => console.log(err));
+    .catch(err=>console.log(err));
 }
 
 function getCookie(name){

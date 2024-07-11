@@ -2,21 +2,21 @@ document.getElementById('vocabulary-form').addEventListener('submit', function(e
     e.preventDefault();
     
     let formData = {
-        user_id: document.getElementById('current-user-id').value,
-        word: document.getElementById('id_word').value,
-        meaning: document.getElementById('id_meaning').value,
-        pronunciation: document.getElementById('id_pronunciation').value,
-        audio: document.getElementById('id_audio').value,
-        example_sentence: document.getElementById('id_examples').value
+        user_id:document.getElementById('current-user-id').value,
+        word:document.getElementById('id_word').value,
+        meaning:document.getElementById('id_meaning').value,
+        pronunciation:document.getElementById('id_pronunciation').value,
+        audio:document.getElementById('id_audio').value,
+        example_sentence:document.getElementById('id_examples').value
     };
 
     fetch('/save-word/', {
         method: 'POST',
         headers: {
-            'X-CSRFToken': getCookie('csrftoken'),
-            'Content-Type': 'application/json'
+            'X-CSRFToken':getCookie('csrftoken'),
+            'Content-Type':'application/json'
         },
-        body: JSON.stringify(formData)
+        body:JSON.stringify(formData)
     })
     .then(res => res.json())
     .then(data => {
@@ -28,7 +28,7 @@ document.getElementById('vocabulary-form').addEventListener('submit', function(e
             alert('Failed to save word. ' + JSON.stringify(data.errors));
         }
     })
-    .catch(err => console.log(err));
+    .catch(err=>console.log(err));
 });
 
 function getCookie(name) {
@@ -52,17 +52,17 @@ function deleteVocabulary(vocabularyId) {
         const csrftoken = getCookie('csrftoken');
 
         fetch(`/delete-vocabulary/${vocabularyId}/`, {
-            method: 'DELETE',
-            headers: {
+            method:'DELETE',
+            headers:{
                 'X-CSRFToken': csrftoken,
                 'Content-Type': 'application/json'
             }
         })
         .then(res => {
-            if (res.ok) {
+            if(res.ok){
                 alert('Vocabulary deleted successfully!');
                 window.location.reload();
-            } else {
+            }else{
                 alert('Failed to delete vocabulary.');
             }
         })

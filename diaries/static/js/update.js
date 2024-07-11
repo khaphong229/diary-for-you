@@ -1,23 +1,23 @@
 function updateDiary(diaryId) {
-    const csrftoken = getCookie('csrftoken');
-    const title = document.getElementById('id_title').value;
-    const content = document.getElementById('id_content').value;
+    const csrftoken= getCookie('csrftoken');
+    const title=document.getElementById('id_title').value;
+    const content=document.getElementById('id_content').value;
     const created=document.getElementById('id_created_at').value;
     fetch(`/update-diary/${diaryId}/`, {
-        method: 'PUT',
+        method:'PUT',
         headers: {
             'X-CSRFToken': csrftoken,
             'X-Requested-With': 'XMLHttpRequest',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
+        body:JSON.stringify({
                             title: title, 
                             content: content,
                             created_at:created
                             })
     })
-    .then(res => res.json())
-    .then(data => {
+    .then(res=>res.json())
+    .then(data=>{
         if (data.message) {
             alert(data.message);
             let back_page=window.location.href.split('/update-diary/')[0]+'/home/';
@@ -26,7 +26,7 @@ function updateDiary(diaryId) {
             alert('An error occurred.');
         }
     })
-    .catch(err => console.log(err));
+    .catch(err=>console.log(err));
 }
 
 function getCookie(name) {

@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const calendarButton = document.getElementById('calendar');
-    const calendarPopup = document.getElementById('calendar-popup');
-    const calendarContainer = document.getElementById('calendar-container');
-    const dateSearch = document.getElementById('date-search');
+    const calendarButton=document.getElementById('calendar');
+    const calendarPopup=document.getElementById('calendar-popup');
+    const calendarContainer=document.getElementById('calendar-container');
+    const dateSearch=document.getElementById('date-search');
 
-    let picker = new Pikaday({
+    let picker= new Pikaday({
         field: dateSearch,
         container: calendarContainer,
         format: 'YYYY-MM-DD',
@@ -53,11 +53,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 'X-CSRFToken': getCookie('csrftoken')
             }
         })
-        .then(res => res.json())
-        .then(data => {
+        .then(res=> res.json())
+        .then(data=>{
             display_diaries(data);
         })
-        .catch(err => console.log(err));
+        .catch(err=>console.log(err));
     }
 
     function getCookie(name) {
@@ -76,19 +76,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function display_diaries(diaries) {
-        const diary_container = document.querySelector('.list-diaries');
-        diary_container.innerHTML = '';
-        if (diaries.length === 0) {
+        const diary_container=document.querySelector('.list-diaries');
+        diary_container.innerHTML='';
+        if (diaries.length===0) {
             diary_container.innerHTML = '<h1>There are no logs for this date</h1>';
             return;
         }
-        diaries.forEach(diary => {
-            const created_date = new Date(diary.created_at);
-            const created_day = ('0' + created_date.getDate()).slice(-2);
-            const created_month = ('0' + (created_date.getMonth() + 1)).slice(-2);
-            const diary_child = document.createElement('div');
-            diary_child.className = 'diary';
-            diary_child.innerHTML = `
+        diaries.forEach(diary=>{
+            const created_date= new Date(diary.created_at);
+            const created_day=('0' + created_date.getDate()).slice(-2);
+            const created_month=('0' + (created_date.getMonth() + 1)).slice(-2);
+            const diary_child=document.createElement('div');
+            diary_child.className='diary';
+            diary_child.innerHTML=`
                 <div class="time-diary">
                     <div class="created-day">${created_day}</div>
                     <div class="created-month">${created_month}</div>

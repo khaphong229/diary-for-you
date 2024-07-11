@@ -1,19 +1,19 @@
 const translateDiary=async(diaryId) => {
-    const language = document.getElementById('language').value;
-    const language_from = document.getElementById('language_from').value;
-    const textToTranslate = document.getElementById('diary-content').innerText;
+    const language=document.getElementById('language').value;
+    const language_from=document.getElementById('language_from').value;
+    const textToTranslate=document.getElementById('diary-content').innerText;
 
-    const url = 'https://google-translator9.p.rapidapi.com/v2';
-    const data = JSON.stringify({
-        q: textToTranslate,
-        source: language_from,
-        target: language,
-        format: 'text'
+    const url='https://google-translator9.p.rapidapi.com/v2';
+    const data=JSON.stringify({
+        q:textToTranslate,
+        source:language_from,
+        target:language,
+        format:'text'
     });
 
-    const options = {
-        method: 'POST',
-        headers: {
+    const options={
+        method:'POST',
+        headers:{
             'x-rapidapi-key': '72bd193986msh0160757f2d92060p140acajsn9d211a7b306c',
             'x-rapidapi-host': 'google-translator9.p.rapidapi.com',
             'Content-Type': 'application/json'
@@ -22,9 +22,9 @@ const translateDiary=async(diaryId) => {
     };
 
     try {
-        const res = await fetch(url, options);
-        const result = await res.json();
-        const translatedText = result.data.translations[0].translatedText;
+        const res =await fetch(url, options);
+        const result=await res.json();
+        const translatedText= result.data.translations[0].translatedText;
 
         document.getElementById('translated-content').innerText = translatedText;
 
@@ -37,7 +37,7 @@ const translateDiary=async(diaryId) => {
 }
 
 function getCookie(name) {
-    let cookieValue = null;
+    let cookieValue= null;
     if (document.cookie && document.cookie !== '') {
         const cookies = document.cookie.split(';');
         for (let i = 0; i < cookies.length; i++) {
@@ -51,7 +51,7 @@ function getCookie(name) {
     return cookieValue;
 }
 
-const saveTranslation= async(diaryId, language, translatedText) => {
+const saveTranslation=async(diaryId, language, translatedText) => {
     const csrftoken = getCookie('csrftoken');
 
     const data = {
@@ -61,7 +61,7 @@ const saveTranslation= async(diaryId, language, translatedText) => {
     };
 
     try {
-        const res = await fetch(`/diary/save-translation/`, {
+        const res= await fetch(`/diary/save-translation/`, {
             method: 'POST',
             headers: {
                 'X-CSRFToken': csrftoken,
@@ -70,14 +70,14 @@ const saveTranslation= async(diaryId, language, translatedText) => {
             body: JSON.stringify(data)
         });
 
-        if (res.ok) {
+        if (res.ok){
             console.log('Translation saved successfully.');
-        } else {
+        }else{
             console.error('Failed to save translation.');
         }
 
-    } catch (err) {
-        console.error('Error:', err);
+    } catch(err){
+        console.error(err);
     }
 }
 const countries={
