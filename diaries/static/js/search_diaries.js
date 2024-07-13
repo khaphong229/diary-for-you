@@ -4,19 +4,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const calendarContainer=document.getElementById('calendar-container');
     const dateSearch=document.getElementById('date-search');
 
-    let picker= new Pikaday({
-        field: dateSearch,
+    let picker = new Pikaday({
+        field:dateSearch,
         container: calendarContainer,
         format: 'YYYY-MM-DD',
         toString: function(date, format) {
-            var day = date.getDate();
-            var month = date.getMonth() + 1;
-            var year = date.getFullYear();
-
-            var yyyy = year;
-            var mm = ((month > 9) ? '' : '0') + month;
-            var dd = ((day > 9) ? '' : '0') + day;
-
+            var day=date.getDate();
+            var month=date.getMonth() + 1;
+            var year=date.getFullYear();
+            var yyyy=year;
+            var mm=((month > 9) ? '' : '0') + month;
+            var dd=((day > 9) ? '' : '0') + day;
             return yyyy + '-' + mm + '-' + dd;
         },
         onSelect: function(date) {
@@ -24,23 +22,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    calendarButton.addEventListener('click', function(e) {
+    calendarButton.addEventListener('click',function(e){
         e.stopPropagation();
         calendarPopup.style.display = calendarPopup.style.display === 'none' ? 'block' : 'none';
     });
 
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click',function(e) {
         if (!calendarPopup.contains(e.target) && e.target !== calendarButton) {
             calendarPopup.style.display = 'none';
         }
     });
 
-    calendarPopup.addEventListener('click', function(e) {
+    calendarPopup.addEventListener('click',function(e) {
         e.stopPropagation();
     });
 
-    dateSearch.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
+    dateSearch.addEventListener('keypress',function(e) {
+        if (e.key==='Enter') {
             searchDiaries(this.value);
         }
     });
@@ -53,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 'X-CSRFToken': getCookie('csrftoken')
             }
         })
-        .then(res=> res.json())
+        .then(res=>res.json())
         .then(data=>{
             display_diaries(data);
         })
@@ -76,19 +74,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function display_diaries(diaries) {
-        const diary_container=document.querySelector('.list-diaries');
-        diary_container.innerHTML='';
-        if (diaries.length===0) {
+        const diary_container = document.querySelector('.list-diaries');
+        diary_container.innerHTML = '';
+        if (diaries.length === 0) {
             diary_container.innerHTML = '<h1>There are no logs for this date</h1>';
             return;
         }
-        diaries.forEach(diary=>{
-            const created_date= new Date(diary.created_at);
-            const created_day=('0' + created_date.getDate()).slice(-2);
-            const created_month=('0' + (created_date.getMonth() + 1)).slice(-2);
-            const diary_child=document.createElement('div');
-            diary_child.className='diary';
-            diary_child.innerHTML=`
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        diaries.forEach(diary => {
+            const created_date = new Date(diary.created_at);
+            const created_day = created_date.getDate(); 
+            const created_month = monthNames[created_date.getMonth()]; 
+
+            const diary_child = document.createElement('div');
+            diary_child.className = 'diary';
+            diary_child.innerHTML = `
                 <div class="time-diary">
                     <div class="created-day">${created_day}</div>
                     <div class="created-month">${created_month}</div>
@@ -105,5 +105,4 @@ document.addEventListener('DOMContentLoaded', function() {
             diary_container.appendChild(diary_child);
         });
     }
-    
 });
